@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+
+    <permission name="collective.timestamp: Read time stamps" acquire="False">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
+
+    <permission name="collective.timestamp: Write time stamps" acquire="False">
+      <role name="Manager"/>
+    </permission>
+
+  </permissions>
+</rolemap>

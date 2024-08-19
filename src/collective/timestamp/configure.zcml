@@ -1,0 +1,39 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.timestamp">
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include file="permissions.zcml" />
+
+  <include package=".behaviors" />
+  <include package=".browser" />
+  <include file="subscribers.zcml" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.timestamp"
+      directory="profiles/default"
+      description="Time stamping support for Plone content types"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.timestamp (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls collective.timestamp"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="collective.timestamp-hiddenprofiles"
+      />
+
+</configure>

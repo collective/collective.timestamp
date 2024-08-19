@@ -1,0 +1,44 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.timestamp">
+
+  <browser:page
+      name="timestamping-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.TimestampingControlPanelView"
+      permission="cmf.ManagePortal"
+      layer="collective.timestamp.interfaces.ICollectiveTimestampLayer"
+      />
+
+  <browser:page
+      name="timestamp_utils"
+      for="*"
+      class=".action.TimestampView"
+      permission="zope2.View"
+      layer="collective.timestamp.interfaces.ICollectiveTimestampLayer"
+      allowed_attributes="available timestamp"
+      />
+
+  <adapter factory=".rule.TimestampActionExecutor" />
+
+  <browser:page
+      name="collective.timestamp.actions.Timestamp"
+      for="plone.app.contentrules.browser.interfaces.IRuleActionAdding"
+      class=".rule.TimestampAddForm"
+      permission="plone.app.contentrules.ManageContentRules"
+      />
+  
+  <plone:ruleAction
+      name="collective.timestamp.actions.Timestamp"
+      title="Timestamp object"
+      description="Timestamp the triggering item"
+      for="*"
+      event="zope.interface.interfaces.IObjectEvent"
+      schema=".rule.ITimestampAction"
+      factory=".rule.TimestampAction"
+      addview="collective.timestamp.actions.Timestamp"
+      />
+
+</configure>
