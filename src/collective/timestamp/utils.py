@@ -1,4 +1,4 @@
-from collective.timestamp.browser.controlpanel import ITimestampingSettings
+from collective.timestamp.interfaces import ITimestampingSettings
 from plone import api
 from pyasn1.codec.der.decoder import decode
 from rfc3161ng import RemoteTimestamper
