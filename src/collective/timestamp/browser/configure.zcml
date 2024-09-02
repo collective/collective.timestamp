@@ -16,7 +16,7 @@
       name="timestamp_utils"
       for="*"
       class=".action.TimestampView"
-      permission="zope2.View"
+      permission="collective.timestamp.generate"
       layer="collective.timestamp.interfaces.ICollectiveTimestampLayer"
       allowed_attributes="available timestamp"
       />

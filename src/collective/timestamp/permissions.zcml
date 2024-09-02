@@ -15,7 +15,7 @@
 
     <permission
       id="collective.timestamp.generate"
-      title="collective.timestamp: Generate time stamps" /> <!-- TODO generation perm -->
+      title="collective.timestamp: Generate time stamps" />
 
   </configure>
 
