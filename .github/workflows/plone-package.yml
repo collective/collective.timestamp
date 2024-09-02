@@ -17,7 +17,7 @@ jobs:
             matrix:
                 plone-version:
                   - 'Plone60'
-                python-version: [3.8, 3.9, 3.10, 3.11, 3.12]
+                python-version: ['3.9', '3.10', '3.11', '3.12']
 
         steps:
             - uses: actions/setup-python@v4
