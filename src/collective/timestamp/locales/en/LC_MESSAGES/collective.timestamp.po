@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-08-19 14:34+0000\n"
+"POT-Creation-Date: 2024-09-04 08:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,6 @@ msgid "Click to timestamp this content."
 msgstr ""
 
 #: ../behaviors/timestamp.py:25
-msgid "File to timestamp"
-msgstr ""
-
-#: ../behaviors/timestamp.py:32
 msgid "Time Stamp Response (TSR) file"
 msgstr ""
 
@@ -30,7 +26,7 @@ msgstr ""
 msgid "Time stamp"
 msgstr ""
 
-#: ../configure.zcml:23
+#: ../configure.zcml:27
 msgid "Time stamping support for Plone content types"
 msgstr ""
 
@@ -38,15 +34,15 @@ msgstr ""
 msgid "Timestamp"
 msgstr ""
 
-#: ../browser/action.py:48
+#: ../browser/action.py:47
 msgid "Timestamp file has been successfully generated and saved"
 msgstr ""
 
-#: ../browser/rule.py:67
+#: ../browser/rule.py:65
 msgid "Timestamp file has been successfully generated and saved for ${name}"
 msgstr ""
 
-#: ../browser/action.py:37
+#: ../browser/action.py:36
 msgid "Timestamp has failed."
 msgstr ""
 
@@ -59,26 +55,26 @@ msgstr ""
 msgid "Timestamp the triggering item"
 msgstr ""
 
-#: ../browser/controlpanel.py:21
+#: ../browser/controlpanel.py:11
 msgid "Timestamping settings"
 msgstr ""
 
-#: ../browser/controlpanel.py:14
+#: ../interfaces.py:21
 msgid "URL of the timestamping service you want to use"
 msgstr ""
 
-#: ../browser/rule.py:78
+#: ../browser/rule.py:76
 msgid "Unable to timestamp ${name}: ${error}"
 msgstr ""
 
-#: ../configure.zcml:32
+#: ../configure.zcml:36
 msgid "Uninstalls collective.timestamp"
 msgstr ""
 
-#: ../configure.zcml:23
+#: ../configure.zcml:27
 msgid "collective.timestamp"
 msgstr ""
 
-#: ../configure.zcml:32
+#: ../configure.zcml:36
 msgid "collective.timestamp (uninstall)"
 msgstr ""
