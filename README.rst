@@ -9,9 +9,6 @@
     :target: https://coveralls.io/github/collective/collective.timestamp?branch=main
     :alt: Coveralls
 
-.. image:: https://codecov.io/gh/collective/collective.timestamp/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/collective/collective.timestamp
-
 .. image:: https://img.shields.io/pypi/v/collective.timestamp.svg
     :target: https://pypi.python.org/pypi/collective.timestamp/
     :alt: Latest Version
@@ -39,18 +36,12 @@ Features
 - Timestamp any content type with a file field
 
 
-Documentation
--------------
-
-Full documentation for end users can be found in the "docs" folder.
-
-
 Translations
 ------------
 
 This product has been translated into
 
-- French (TODO)
+- French
 
 
 Installation

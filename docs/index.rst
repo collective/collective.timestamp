@@ -1,5 +1,0 @@
-====================
-collective.timestamp
-====================
-
-User documentation
