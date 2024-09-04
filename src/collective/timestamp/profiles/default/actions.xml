@@ -11,7 +11,7 @@
       <property name="available_expr">object/@@timestamp_utils/available|nothing</property>
       <property name="visible">True</property>
       <property name="permissions">
-        <element value="collective.timestamp: Generate time stamps" />
+        <element value="collective.timestamp: Generate timestamps" />
       </property>
     </object>
   </object>

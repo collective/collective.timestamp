@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-09-04 08:21+0000\n"
+"POT-Creation-Date: 2024-09-04 11:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,60 +18,57 @@ msgstr ""
 
 #: ../profiles/default/actions.xml
 msgid "Click to timestamp this content."
-msgstr ""
+msgstr "Cliquez pour horodater ce contenu."
 
 #: ../behaviors/timestamp.py:25
 msgid "Time Stamp Response (TSR) file"
-msgstr ""
+msgstr "Fichier d'horodatage (TSR)"
 
 #: ../behaviors/timestamp.py:18
-msgid "Time stamp"
-msgstr ""
-
-#: ../configure.zcml:27
-msgid "Time stamping support for Plone content types"
-msgstr ""
-
 #: ../profiles/default/actions.xml
 msgid "Timestamp"
-msgstr ""
+msgstr "Horodater"
 
-#: ../browser/action.py:47
+#: ../browser/action.py:44
 msgid "Timestamp file has been successfully generated and saved"
-msgstr ""
+msgstr "L'horodatage a bien été effectué."
 
 #: ../browser/rule.py:65
 msgid "Timestamp file has been successfully generated and saved for ${name}"
-msgstr ""
+msgstr "L'horodatage a bien été effectué pour ${name}."
 
-#: ../browser/action.py:36
+#: ../browser/action.py:35
 msgid "Timestamp has failed."
-msgstr ""
+msgstr "L'horodatage a échoué."
 
 #: ../browser/configure.zcml:42
 #: ../browser/rule.py:30
 msgid "Timestamp object"
-msgstr ""
+msgstr "Horodater le contenu"
 
 #: ../browser/configure.zcml:42
 msgid "Timestamp the triggering item"
-msgstr ""
+msgstr "Horodater l'élément déclencheur"
 
 #: ../browser/controlpanel.py:11
 msgid "Timestamping settings"
-msgstr ""
+msgstr "Paramètres d'horodatage"
+
+#: ../configure.zcml:27
+msgid "Timestamping support for Plone content types"
+msgstr "Support de l'horodatage pour les types de contenus Plone"
 
 #: ../interfaces.py:21
 msgid "URL of the timestamping service you want to use"
-msgstr ""
+msgstr "Adresse URL du service d'horodatage que vous souhaitez utiliser"
 
 #: ../browser/rule.py:76
 msgid "Unable to timestamp ${name}: ${error}"
-msgstr ""
+msgstr "Incapable d'horodater ${name}: ${error}"
 
 #: ../configure.zcml:36
 msgid "Uninstalls collective.timestamp"
-msgstr ""
+msgstr "Désinstalle collective.timestamp"
 
 #: ../configure.zcml:27
 msgid "collective.timestamp"

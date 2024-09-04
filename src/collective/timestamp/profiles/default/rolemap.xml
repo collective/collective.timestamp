@@ -2,17 +2,17 @@
 <rolemap>
   <permissions>
 
-    <permission name="collective.timestamp: Read time stamps" acquire="False">
+    <permission name="collective.timestamp: Read timestamps" acquire="False">
       <role name="Manager"/>
       <role name="Site Administrator"/>
     </permission>
 
-    <permission name="collective.timestamp: Read time stamps" acquire="False">
+    <permission name="collective.timestamp: Read timestamps" acquire="False">
       <role name="Manager"/>
       <role name="Site Administrator"/>
     </permission>
 
-    <permission name="collective.timestamp: Generate time stamps" acquire="False">
+    <permission name="collective.timestamp: Generate timestamps" acquire="False">
       <role name="Manager"/>
       <role name="Site Administrator"/>
     </permission>

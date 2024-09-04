@@ -21,7 +21,7 @@
       name="default"
       title="collective.timestamp"
       directory="profiles/default"
-      description="Time stamping support for Plone content types"
+      description="Timestamping support for Plone content types"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.post_install"
       />

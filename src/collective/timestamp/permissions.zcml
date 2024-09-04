@@ -7,15 +7,15 @@
 
     <permission
       id="collective.timestamp.read"
-      title="collective.timestamp: Read time stamps" />
+      title="collective.timestamp: Read timestamps" />
 
     <permission
       id="collective.timestamp.write"
-      title="collective.timestamp: Write time stamps" />
+      title="collective.timestamp: Write timestamps" />
 
     <permission
       id="collective.timestamp.generate"
-      title="collective.timestamp: Generate time stamps" />
+      title="collective.timestamp: Generate timestamps" />
 
   </configure>
 

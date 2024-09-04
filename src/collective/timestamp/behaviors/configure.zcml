@@ -9,8 +9,8 @@
 
   <plone:behavior
       name="collective.timestamp"
-      title="Time stamped"
-      description="This behavior keeps time stamp informations for content type primary file"
+      title="Timestamped"
+      description="This behavior keeps timestamp informations for content type primary file"
       provides=".timestamp.ITimestampableDocument"
       marker=".timestamp.ITimestampableDocument"
       />

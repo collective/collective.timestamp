@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-09-04 08:21+0000\n"
+"POT-Creation-Date: 2024-09-04 11:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,18 +26,11 @@ msgid "Time Stamp Response (TSR) file"
 msgstr ""
 
 #: ../behaviors/timestamp.py:18
-msgid "Time stamp"
-msgstr ""
-
-#: ../configure.zcml:27
-msgid "Time stamping support for Plone content types"
-msgstr ""
-
 #: ../profiles/default/actions.xml
 msgid "Timestamp"
 msgstr ""
 
-#: ../browser/action.py:47
+#: ../browser/action.py:44
 msgid "Timestamp file has been successfully generated and saved"
 msgstr ""
 
@@ -45,7 +38,7 @@ msgstr ""
 msgid "Timestamp file has been successfully generated and saved for ${name}"
 msgstr ""
 
-#: ../browser/action.py:36
+#: ../browser/action.py:35
 msgid "Timestamp has failed."
 msgstr ""
 
@@ -60,6 +53,10 @@ msgstr ""
 
 #: ../browser/controlpanel.py:11
 msgid "Timestamping settings"
+msgstr ""
+
+#: ../configure.zcml:27
+msgid "Timestamping support for Plone content types"
 msgstr ""
 
 #: ../interfaces.py:21

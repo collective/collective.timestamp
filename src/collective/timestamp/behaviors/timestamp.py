@@ -15,7 +15,7 @@ class ITimestampableDocument(model.Schema):
 
     model.fieldset(
         "timestamp",
-        label=_("Time stamp"),
+        label=_("Timestamp"),
         fields=["timestamp"],
     )
 
