@@ -5,11 +5,9 @@ from collective.timestamp.utils import get_timestamp
 from plone.namedfile.file import NamedBlobFile
 from plone.namedfile.interfaces import INamedField
 from plone.rfc822.interfaces import IPrimaryFieldInfo
-from rfc3161ng import get_timestamp as get_timestamp_date
 from zope.interface import implementer
 
 import logging
-import pytz
 
 logger = logging.getLogger("collective.timestamp")
 
@@ -51,9 +49,6 @@ class TimeStamper(object):
     def timestamp(self):
         timestamp = get_timestamp(self.get_data())
         self.context.timestamp = NamedBlobFile(
-            data=timestamp.prettyPrint(), filename="timestamp.tsr"
+            data=timestamp["tsr"], filename="timestamp.tsr"
         )
-        tzinfo = pytz.timezone("UTC")
-        timestamp_date = get_timestamp_date(timestamp)
-        self.context.setEffectiveDate(tzinfo.localize(timestamp_date))
-        return get_timestamp(self.get_data())
+        self.context.setEffectiveDate(timestamp["timestamp_date"])

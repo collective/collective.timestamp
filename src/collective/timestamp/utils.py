@@ -1,15 +1,31 @@
 from collective.timestamp.interfaces import ITimestampingSettings
 from plone import api
-from pyasn1.codec.der.decoder import decode
+from pyasn1.codec.der import encoder
+from rfc3161ng import get_timestamp as get_timestamp_date
 from rfc3161ng import RemoteTimestamper
-from rfc3161ng import TimeStampToken
+
+import pytz
 
 
 def get_timestamp(file_content):
     service_url = api.portal.get_registry_record(
-        "timestamping_service_url", interface=ITimestampingSettings
+        "timestamping_service_url",
+        interface=ITimestampingSettings,
     )
-    timestamper = RemoteTimestamper(service_url, certificate=b"", hashname="sha256")
-    value = timestamper(data=file_content, include_tsa_certificate=True)
-    tst, substrate = decode(value, asn1Spec=TimeStampToken())
-    return tst
+    timestamper = RemoteTimestamper(
+        service_url,
+        certificate=b"",
+        hashname="sha256",
+    )
+    tsr = timestamper(
+        data=file_content,
+        include_tsa_certificate=True,
+        return_tsr=True,
+    )
+    timestamp_token = tsr.time_stamp_token
+    tzinfo = pytz.timezone("UTC")
+    timestamp_date = get_timestamp_date(timestamp_token)
+    return {
+        "tsr": encoder.encode(tsr),
+        "timestamp_date": tzinfo.localize(timestamp_date),
+    }
