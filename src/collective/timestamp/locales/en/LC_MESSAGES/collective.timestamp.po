@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-09-04 11:25+0000\n"
+"POT-Creation-Date: 2024-09-04 14:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,19 @@ msgstr ""
 msgid "Click to timestamp this content."
 msgstr ""
 
-#: ../behaviors/timestamp.py:25
+#: ../behaviors/timestamp.py:31
+msgid "Enable timestamping"
+msgstr ""
+
+#: ../behaviors/timestamp.py:32
+msgid "This allows you to disable timestamping for this specific content, for example to avoid this content to be automatically timestamped."
+msgstr ""
+
+#: ../behaviors/timestamp.py:26
 msgid "Time Stamp Response (TSR) file"
 msgstr ""
 
-#: ../behaviors/timestamp.py:18
+#: ../behaviors/timestamp.py:19
 #: ../profiles/default/actions.xml
 msgid "Timestamp"
 msgstr ""
@@ -31,7 +39,7 @@ msgstr ""
 msgid "Timestamp file has been successfully generated and saved"
 msgstr ""
 
-#: ../browser/rule.py:65
+#: ../browser/rule.py:64
 msgid "Timestamp file has been successfully generated and saved for ${name}"
 msgstr ""
 
