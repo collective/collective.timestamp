@@ -2,7 +2,7 @@
 
 from collective.timestamp import _
 from collective.timestamp.behaviors.timestamp import ITimestampableDocument
-from collective.timestamp.utils import get_timestamp
+from collective.timestamp.interfaces import ITimeStamper
 from plone import api
 from plone.namedfile.file import NamedBlobFile
 from Products.Five.browser import BrowserView
@@ -22,16 +22,15 @@ class TimestampView(BrowserView):
         """
         if not ITimestampableDocument.providedBy(self.context):
             return False
-        elif self.context.timestamp is not None:
-            return False
-        elif self.context.timestampable_file is None:
-            return False
-        return True
+        handler = ITimeStamper(self.context)
+        return handler.is_timestampable()
 
     def timestamp(self):
         obj = self.context
+        redirect_url = f"{obj.absolute_url()}/view"
+        handler = ITimeStamper(obj)
         try:
-            timestamp = get_timestamp(obj.timestampable_file.data)
+            timestamp = handler.timestamp()
         except TimestampingError as e:
             api.portal.show_message(
                 _("Timestamp has failed."),
@@ -39,13 +38,12 @@ class TimestampView(BrowserView):
                 type="error",
             )
             logger.error(f"Timestamp action failed for {obj.absolute_url()} : {str(e)}")
-            self.request.response.redirect(f"{self.context.absolute_url()}/view")
-            return
+            self.request.response.redirect(redirect_url)
+            return ""
 
         obj.timestamp = NamedBlobFile(data=timestamp, filename="timestamp.tsr")
         logger.info(f"Timestamp generated for {obj.absolute_url()}")
         api.portal.show_message(
             _("Timestamp file has been successfully generated and saved"), self.request
         )
-        # TODO check redirect file view
-        self.request.response.redirect(f"{self.context.absolute_url()}/view")
+        self.request.response.redirect(redirect_url)

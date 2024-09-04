@@ -11,6 +11,10 @@ class ICollectiveTimestampLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
+class ITimeStamper(Interface):
+    """"""
+
+
 class ITimestampingSettings(Interface):
 
     timestamping_service_url = schema.URI(

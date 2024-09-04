@@ -1,5 +1,5 @@
 from collective.timestamp.behaviors.timestamp import ITimestampableDocument
-from collective.timestamp.utils import get_timestamp
+from collective.timestamp.interfaces import ITimeStamper
 from OFS.SimpleItem import SimpleItem
 from plone import api
 from plone.app.contentrules import PloneMessageFactory as _
@@ -45,15 +45,13 @@ class TimestampActionExecutor:
         if not obj:
             return False
 
-        if not ITimestampableDocument.providedBy(self.context):
+        if not ITimestampableDocument.providedBy(obj):
             return False
-        elif self.context.timestamp is not None:
+        handler = ITimeStamper(self.context)
+        if not handler.is_timestampable():
             return False
-        elif self.context.timestampable_file is None:
-            return False
-
         try:
-            timestamp = get_timestamp(obj.timestampable_file.data)
+            timestamp = handler.timestamp()
         except TimestampingError as e:
             self.error(obj, str(e))
             logger.error(f"Timestamp rule failed for {obj.absolute_url()} : {str(e)}")

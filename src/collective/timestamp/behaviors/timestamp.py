@@ -16,14 +16,7 @@ class ITimestampableDocument(model.Schema):
     model.fieldset(
         "timestamp",
         label=_("Time stamp"),
-        fields=["timestampable_file", "timestamp"],
-    )
-
-    read_permission(timestampable_file="collective.timestamp.read")
-    write_permission(timestampable_file="collective.timestamp.write")
-    timestampable_file = NamedBlobFile(
-        title=_("File to timestamp"),
-        required=False,
+        fields=["timestamp"],
     )
 
     read_permission(timestamp="collective.timestamp.read")
