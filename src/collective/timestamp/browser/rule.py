@@ -7,7 +7,6 @@ from plone.app.contentrules.browser.formhelper import NullAddForm
 from plone.base.utils import pretty_title_or_id
 from plone.contentrules.rule.interfaces import IExecutable
 from plone.contentrules.rule.interfaces import IRuleElementData
-from plone.namedfile.file import NamedBlobFile
 from rfc3161ng import TimestampingError
 from zope.component import adapter
 from zope.interface import implementer
@@ -47,17 +46,16 @@ class TimestampActionExecutor:
 
         if not ITimestampableDocument.providedBy(obj):
             return False
-        handler = ITimeStamper(self.context)
+        handler = ITimeStamper(obj)
         if not handler.is_timestampable():
             return False
         try:
-            timestamp = handler.timestamp()
+            handler.timestamp()
         except TimestampingError as e:
             self.error(obj, str(e))
             logger.error(f"Timestamp rule failed for {obj.absolute_url()} : {str(e)}")
             return False
 
-        obj.timestamp = NamedBlobFile(data=timestamp, filename="timestamp.tsr")
         logger.info(f"Timestamp generated for {obj.absolute_url()}")
         request = getattr(self.context, "REQUEST", None)
         if request is not None:
