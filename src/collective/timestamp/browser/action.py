@@ -4,7 +4,6 @@ from collective.timestamp import _
 from collective.timestamp.behaviors.timestamp import ITimestampableDocument
 from collective.timestamp.interfaces import ITimeStamper
 from plone import api
-from plone.namedfile.file import NamedBlobFile
 from Products.Five.browser import BrowserView
 from rfc3161ng import TimestampingError
 
@@ -30,7 +29,7 @@ class TimestampView(BrowserView):
         redirect_url = f"{obj.absolute_url()}/view"
         handler = ITimeStamper(obj)
         try:
-            timestamp = handler.timestamp()
+            handler.timestamp()
         except TimestampingError as e:
             api.portal.show_message(
                 _("Timestamp has failed."),
@@ -40,8 +39,6 @@ class TimestampView(BrowserView):
             logger.error(f"Timestamp action failed for {obj.absolute_url()} : {str(e)}")
             self.request.response.redirect(redirect_url)
             return ""
-
-        obj.timestamp = NamedBlobFile(data=timestamp, filename="timestamp.tsr")
         logger.info(f"Timestamp generated for {obj.absolute_url()}")
         api.portal.show_message(
             _("Timestamp file has been successfully generated and saved"), self.request

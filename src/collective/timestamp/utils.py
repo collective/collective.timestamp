@@ -12,4 +12,4 @@ def get_timestamp(file_content):
     timestamper = RemoteTimestamper(service_url, certificate=b"", hashname="sha256")
     value = timestamper(data=file_content, include_tsa_certificate=True)
     tst, substrate = decode(value, asn1Spec=TimeStampToken())
-    return tst.prettyPrint()
+    return tst
