@@ -39,6 +39,7 @@ class TimeStamper(object):
             logger.warning(
                 f"Could not find the file field for {self.context.absolute_url()}"
             )
+            return
         return field.value.data
 
     def is_timestamped(self):
