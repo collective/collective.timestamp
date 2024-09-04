@@ -44,9 +44,15 @@ class TimeStamper(object):
         return self.context.timestamp is not None
 
     def is_timestampable(self):
-        return self.get_data() is not None and not self.is_timestamped()
+        if not self.context.enable_timestamping:
+            return False
+        elif self.is_timestamped():
+            return False
+        return self.get_data() is not None
 
     def timestamp(self):
+        if not self.is_timestampable():
+            raise ValueError("Field enable_timestamping must be True to timestamp")
         timestamp = get_timestamp(self.get_data())
         self.context.timestamp = NamedBlobFile(
             data=timestamp["tsr"], filename="timestamp.tsr"
