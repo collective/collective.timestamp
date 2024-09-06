@@ -20,5 +20,11 @@ class ITimestampingSettings(Interface):
     timestamping_service_url = schema.URI(
         title=_("URL of the timestamping service you want to use"),
         default="http://freetsa.org/tsr",
-        required=False,
+        required=True,
+    )
+
+    timestamping_documentation_url = schema.URI(
+        title=_("URL of the documentation explaining how to verify timestamps"),
+        default="https://www.freetsa.org/index_en.php",
+        required=True,
     )

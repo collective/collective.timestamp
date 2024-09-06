@@ -21,6 +21,25 @@
       allowed_attributes="available timestamp"
       />
 
+  <browser:page
+      name="timestamp"
+      for="collective.timestamp.behaviors.timestamp.ITimestampableDocument"
+      class=".verification.VerificationView"
+      template="templates/verification.pt"
+      permission="zope2.View"
+      layer="collective.timestamp.interfaces.ICollectiveTimestampLayer"
+      />
+
+  <browser:viewlet
+      name="collective.timestamp"
+      for="collective.timestamp.behaviors.timestamp.ITimestampableDocument"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+      class=".viewlet.TimestampViewlet"
+      template="templates/viewlet.pt"
+      permission="zope2.View"
+      layer="collective.timestamp.interfaces.ICollectiveTimestampLayer"
+      />
+
   <adapter factory=".rule.TimestampActionExecutor" />
 
   <browser:page
