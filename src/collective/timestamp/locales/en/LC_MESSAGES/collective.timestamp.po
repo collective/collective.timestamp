@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-09-04 14:28+0000\n"
+"POT-Creation-Date: 2024-09-06 12:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,36 @@ msgstr ""
 msgid "Click to timestamp this content."
 msgstr ""
 
+#: ../browser/templates/verification.pt:17
+msgid "Download the .TSR file here :"
+msgstr ""
+
+#: ../browser/templates/verification.pt:23
+msgid "Download the timestamped file here :"
+msgstr ""
+
 #: ../behaviors/timestamp.py:31
 msgid "Enable timestamping"
 msgstr ""
 
+#: ../browser/templates/verification.pt:31
+msgid "More Info"
+msgstr ""
+
+#: ../browser/templates/verification.pt:18
+msgid "TSR File"
+msgstr ""
+
 #: ../behaviors/timestamp.py:32
 msgid "This allows you to disable timestamping for this specific content, for example to avoid this content to be automatically timestamped."
+msgstr ""
+
+#: ../browser/templates/verification.pt:42
+msgid "This content is not timestamped."
+msgstr ""
+
+#: ../browser/templates/verification.pt:11
+msgid "This content was timestamped on"
 msgstr ""
 
 #: ../behaviors/timestamp.py:26
@@ -47,13 +71,25 @@ msgstr ""
 msgid "Timestamp has failed."
 msgstr ""
 
-#: ../browser/configure.zcml:42
+#: ../browser/templates/verification.pt:3
+msgid "Timestamp informations"
+msgstr ""
+
+#: ../browser/configure.zcml:61
 #: ../browser/rule.py:30
 msgid "Timestamp object"
 msgstr ""
 
-#: ../browser/configure.zcml:42
+#: ../browser/configure.zcml:61
 msgid "Timestamp the triggering item"
+msgstr ""
+
+#: ../browser/templates/viewlet.pt:1
+msgid "Timestamped"
+msgstr ""
+
+#: ../browser/templates/verification.pt:24
+msgid "Timestamped File"
 msgstr ""
 
 #: ../browser/controlpanel.py:11
@@ -62,6 +98,10 @@ msgstr ""
 
 #: ../configure.zcml:27
 msgid "Timestamping support for Plone content types"
+msgstr ""
+
+#: ../interfaces.py:27
+msgid "URL of the documentation explaining how to verify timestamps"
 msgstr ""
 
 #: ../interfaces.py:21
