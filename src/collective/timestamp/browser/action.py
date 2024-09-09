@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from collective.timestamp import _
+from collective.timestamp import logger
 from collective.timestamp.behaviors.timestamp import ITimestampableDocument
 from collective.timestamp.interfaces import ITimeStamper
 from plone import api
 from Products.Five.browser import BrowserView
 from rfc3161ng import TimestampingError
-
-import logging
-
-logger = logging.getLogger("collective.timestamp")
 
 
 class TimestampView(BrowserView):

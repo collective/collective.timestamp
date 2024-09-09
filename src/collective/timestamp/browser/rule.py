@@ -1,3 +1,4 @@
+from collective.timestamp import logger
 from collective.timestamp.behaviors.timestamp import ITimestampableDocument
 from collective.timestamp.interfaces import ITimeStamper
 from OFS.SimpleItem import SimpleItem
@@ -11,10 +12,6 @@ from rfc3161ng import TimestampingError
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import Interface
-
-import logging
-
-logger = logging.getLogger("collective.timestamp")
 
 
 class ITimestampAction(Interface):
