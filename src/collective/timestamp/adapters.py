@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from collective.timestamp import logger
 from collective.timestamp.interfaces import ITimeStamper
 from collective.timestamp.utils import get_timestamp
 from plone.namedfile.file import NamedBlobFile
 from plone.namedfile.interfaces import INamedField
 from plone.rfc822.interfaces import IPrimaryFieldInfo
 from zope.interface import implementer
-
-import logging
-
-logger = logging.getLogger("collective.timestamp")
 
 
 @implementer(ITimeStamper)
@@ -58,3 +55,5 @@ class TimeStamper(object):
             data=timestamp["tsr"], filename="timestamp.tsr"
         )
         self.context.setEffectiveDate(timestamp["timestamp_date"])
+        self.context.reindexObject(
+            idxs=["effective", "effectiveRange", "is_timestamped"])
