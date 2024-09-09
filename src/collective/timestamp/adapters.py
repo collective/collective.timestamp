@@ -56,4 +56,5 @@ class TimeStamper(object):
         )
         self.context.setEffectiveDate(timestamp["timestamp_date"])
         self.context.reindexObject(
-            idxs=["effective", "effectiveRange", "is_timestamped"])
+            idxs=["effective", "effectiveRange", "is_timestamped"]
+        )
