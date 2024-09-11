@@ -15,29 +15,7 @@
   <include package=".browser" />
   <include file="adapters.zcml" />
   <include file="indexers.zcml" />
+  <include file="profiles.zcml" />
   <include file="subscribers.zcml" />
-
-  <genericsetup:registerProfile
-      name="default"
-      title="collective.timestamp"
-      directory="profiles/default"
-      description="Timestamping support for Plone content types"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.post_install"
-      />
-
-  <genericsetup:registerProfile
-      name="uninstall"
-      title="collective.timestamp (uninstall)"
-      directory="profiles/uninstall"
-      description="Uninstalls collective.timestamp"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.uninstall"
-      />
-
-  <utility
-      factory=".setuphandlers.HiddenProfiles"
-      name="collective.timestamp-hiddenprofiles"
-      />
 
 </configure>

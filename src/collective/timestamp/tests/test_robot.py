@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from collective.timestamp.testing import (  # noqa: E501
-    COLLECTIVE_TIMESTAMP_ACCEPTANCE_TESTING,
-)
+
+from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_ACCEPTANCE_TESTING
 from plone.app.testing import ROBOT_TEST_LEVEL
 from plone.testing import layered
 

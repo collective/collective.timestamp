@@ -27,7 +27,7 @@ class CollectiveTimestampLayer(PloneSandboxLayer):
         self.loadZCML(package=collective.timestamp)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, "collective.timestamp:default")
+        applyProfile(portal, "collective.timestamp:testing")
 
 
 COLLECTIVE_TIMESTAMP_FIXTURE = CollectiveTimestampLayer()
