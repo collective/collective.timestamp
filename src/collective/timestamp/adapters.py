@@ -49,7 +49,7 @@ class TimeStamper(object):
 
     def timestamp(self):
         if not self.is_timestampable():
-            raise ValueError("Field enable_timestamping must be True to timestamp")
+            raise ValueError("This content is not timestampable")
         timestamp = get_timestamp(self.get_data())
         self.context.timestamp = NamedBlobFile(
             data=timestamp["tsr"], filename="timestamp.tsr"
