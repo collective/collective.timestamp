@@ -28,12 +28,18 @@
 collective.timestamp
 ====================
 
-Timestamp files published in Plone. 
+Timestamp Files (or any other content types with a file primary field) in Plone.
+The `collective.timestamp` behavior must be activated on content types you want to timestamp.
+
 
 Features
 --------
 
-- Timestamp any content type with a file field
+- Allows you to timestamp a file via a toolbar action.
+- Provides a way to timestamp files through a content rule action executor.
+- Displays a timestamped viewlet on timestamped content.
+- The viewlet provides access to a verification view (with files and instructions).
+- Timestamping service and verification instructions are configurable via a configlet.
 
 
 Translations
