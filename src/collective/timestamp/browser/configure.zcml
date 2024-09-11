@@ -35,7 +35,6 @@
       for="collective.timestamp.behaviors.timestamp.ITimestampableDocument"
       manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
       class=".viewlet.TimestampViewlet"
-      template="templates/viewlet.pt"
       permission="zope2.View"
       layer="collective.timestamp.interfaces.ICollectiveTimestampLayer"
       />
