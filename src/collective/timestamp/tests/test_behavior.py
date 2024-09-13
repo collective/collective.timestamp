@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 
 from collective.timestamp.behaviors.timestamp import ITimestampableDocument
-from collective.timestamp.browser.viewlets import TimestampWarningViewlet
-from collective.timestamp.interfaces import ITimeStamper
-from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
+from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_FUNCTIONAL_TESTING
 from plone import api
 from plone.app.dexterity.behaviors.metadata import IBasic
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_NAME
+from plone.app.testing import TEST_USER_PASSWORD
 from plone.behavior.interfaces import IBehavior
 from plone.namedfile.file import NamedBlobFile
+from plone.testing.z2 import Browser
 from Products.statusmessages.interfaces import IStatusMessage
 from rfc3161ng import TimestampingError
 from unittest.mock import patch
@@ -19,12 +20,13 @@ from zope.interface import Interface
 from zope.lifecycleevent import Attributes
 from zope.lifecycleevent import modified
 
+import transaction
 import unittest
 
 
 class TestBehavior(unittest.TestCase):
 
-    layer = COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
+    layer = COLLECTIVE_TIMESTAMP_FUNCTIONAL_TESTING
 
     def setUp(self):
         """Custom shared utility setup for tests."""
@@ -75,20 +77,33 @@ class TestBehavior(unittest.TestCase):
             self.assertEqual(len(show), 2)
             self.assertIn("Timestamp has failed", show[1].message)
 
-    def test_warning_viewlet(self):
-        viewlet = TimestampWarningViewlet(self.document, self.request, None)
-        with self.assertRaises(TypeError):
-            viewlet.available()
-        viewlet = TimestampWarningViewlet(self.file, self.request, None)
-        self.assertFalse(viewlet.available())
+    def test_edition_warning(self):
+        transaction.commit()
+        browser = Browser(self.layer["app"])
+        browser.addHeader(
+            "Authorization",
+            "Basic %s:%s"
+            % (
+                TEST_USER_NAME,
+                TEST_USER_PASSWORD,
+            ),
+        )
+        browser.open("{}/edit".format(self.file.absolute_url()))
+        html = browser.contents
+        self.assertNotIn(
+            "You are editing a timestamped content.",
+            html,
+        )
         self.file.file = NamedBlobFile(data=b"file data", filename="file.txt")
-        self.assertFalse(viewlet.available())
-        handler = ITimeStamper(self.file)
-        handler.timestamp()
-        self.assertTrue(viewlet.available())
-        viewlet.update()
-        html = viewlet.render()
-        self.assertIn("Your modifications can invalidate the timestamp.", html)
+        view = getMultiAdapter((self.file, self.request), name="timestamp_utils")
+        view.timestamp()
+        transaction.commit()
+        browser.open("{}/edit".format(self.file.absolute_url()))
+        html = browser.contents
+        self.assertIn(
+            "You are editing a timestamped content. Your modifications can invalidate the timestamp.",
+            html,
+        )
 
     def test_subscribers(self):
         self.file.file = NamedBlobFile(data=b"file data", filename="file.txt")

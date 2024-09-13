@@ -34,18 +34,8 @@
       name="collective.timestamp"
       for="collective.timestamp.behaviors.timestamp.ITimestampableDocument"
       manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
-      class=".viewlets.TimestampViewlet"
+      class=".viewlet.TimestampViewlet"
       permission="zope2.View"
-      layer="collective.timestamp.interfaces.ICollectiveTimestampLayer"
-      />
-
-  <browser:viewlet
-      name="collective.timestamp.warning"
-      for="collective.timestamp.behaviors.timestamp.ITimestampableDocument"
-      view="z3c.form.interfaces.IEditForm"
-      manager="plone.app.layout.viewlets.interfaces.IGlobalStatusMessage"
-      class=".viewlets.TimestampWarningViewlet"
-      permission="cmf.ModifyPortalContent"
       layer="collective.timestamp.interfaces.ICollectiveTimestampLayer"
       />
 
