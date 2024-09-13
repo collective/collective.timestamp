@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-09-06 12:05+0000\n"
+"POT-Creation-Date: 2024-09-13 09:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,28 +61,32 @@ msgstr "Fichier d'horodatage (TSR)"
 msgid "Timestamp"
 msgstr "Horodater"
 
-#: ../browser/action.py:44
+#: ../browser/action.py:41
 msgid "Timestamp file has been successfully generated and saved"
 msgstr "L'horodatage a bien été effectué."
 
-#: ../browser/rule.py:64
+#: ../browser/rule.py:61
 msgid "Timestamp file has been successfully generated and saved for ${name}"
 msgstr "L'horodatage a bien été effectué pour ${name}."
 
-#: ../browser/action.py:35
+#: ../browser/action.py:32
 msgid "Timestamp has failed."
 msgstr "L'horodatage a échoué."
+
+#: ../subscribers.py:21
+msgid "Timestamp information has been removed since the file has changed"
+msgstr "L'horodatage a été retiré étant donné que le fichier original a changé"
 
 #: ../browser/templates/verification.pt:3
 msgid "Timestamp informations"
 msgstr "Informations d'horodatage"
 
-#: ../browser/configure.zcml:61
-#: ../browser/rule.py:30
+#: ../browser/configure.zcml:60
+#: ../browser/rule.py:27
 msgid "Timestamp object"
 msgstr "Horodater le contenu"
 
-#: ../browser/configure.zcml:61
+#: ../browser/configure.zcml:60
 msgid "Timestamp the triggering item"
 msgstr "Horodater l'élément déclencheur"
 
@@ -98,7 +102,7 @@ msgstr "Fichier horodaté"
 msgid "Timestamping settings"
 msgstr "Paramètres d'horodatage"
 
-#: ../configure.zcml:27
+#: ../profiles.zcml:14
 msgid "Timestamping support for Plone content types"
 msgstr "Support de l'horodatage pour les types de contenus Plone"
 
@@ -110,18 +114,26 @@ msgstr "Adresse URL de la documentation expliquant comment vérifier les horodat
 msgid "URL of the timestamping service you want to use"
 msgstr "Adresse URL du service d'horodatage que vous souhaitez utiliser"
 
-#: ../browser/rule.py:76
+#: ../browser/rule.py:73
 msgid "Unable to timestamp ${name}: ${error}"
 msgstr "Incapable d'horodater ${name}: ${error}"
 
-#: ../configure.zcml:36
+#: ../profiles.zcml:31
 msgid "Uninstalls collective.timestamp"
 msgstr "Désinstalle collective.timestamp"
 
-#: ../configure.zcml:27
+#: ../profiles.zcml:14
 msgid "collective.timestamp"
 msgstr ""
 
-#: ../configure.zcml:36
+#: ../profiles.zcml:22
+msgid "collective.timestamp (testing)"
+msgstr ""
+
+#: ../profiles.zcml:31
 msgid "collective.timestamp (uninstall)"
+msgstr ""
+
+#: ../profiles.zcml:22
+msgid "collective.timestamp testing profile"
 msgstr ""

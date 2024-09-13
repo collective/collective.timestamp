@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-09-06 12:05+0000\n"
+"POT-Creation-Date: 2024-09-13 09:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,28 +62,32 @@ msgstr ""
 msgid "Timestamp"
 msgstr ""
 
-#: ../browser/action.py:44
+#: ../browser/action.py:41
 msgid "Timestamp file has been successfully generated and saved"
 msgstr ""
 
-#: ../browser/rule.py:64
+#: ../browser/rule.py:61
 msgid "Timestamp file has been successfully generated and saved for ${name}"
 msgstr ""
 
-#: ../browser/action.py:35
+#: ../browser/action.py:32
 msgid "Timestamp has failed."
+msgstr ""
+
+#: ../subscribers.py:21
+msgid "Timestamp information has been removed since the file has changed"
 msgstr ""
 
 #: ../browser/templates/verification.pt:3
 msgid "Timestamp informations"
 msgstr ""
 
-#: ../browser/configure.zcml:61
-#: ../browser/rule.py:30
+#: ../browser/configure.zcml:60
+#: ../browser/rule.py:27
 msgid "Timestamp object"
 msgstr ""
 
-#: ../browser/configure.zcml:61
+#: ../browser/configure.zcml:60
 msgid "Timestamp the triggering item"
 msgstr ""
 
@@ -99,7 +103,7 @@ msgstr ""
 msgid "Timestamping settings"
 msgstr ""
 
-#: ../configure.zcml:27
+#: ../profiles.zcml:14
 msgid "Timestamping support for Plone content types"
 msgstr ""
 
@@ -111,18 +115,26 @@ msgstr ""
 msgid "URL of the timestamping service you want to use"
 msgstr ""
 
-#: ../browser/rule.py:76
+#: ../browser/rule.py:73
 msgid "Unable to timestamp ${name}: ${error}"
 msgstr ""
 
-#: ../configure.zcml:36
+#: ../profiles.zcml:31
 msgid "Uninstalls collective.timestamp"
 msgstr ""
 
-#: ../configure.zcml:27
+#: ../profiles.zcml:14
 msgid "collective.timestamp"
 msgstr ""
 
-#: ../configure.zcml:36
+#: ../profiles.zcml:22
+msgid "collective.timestamp (testing)"
+msgstr ""
+
+#: ../profiles.zcml:31
 msgid "collective.timestamp (uninstall)"
+msgstr ""
+
+#: ../profiles.zcml:22
+msgid "collective.timestamp testing profile"
 msgstr ""
