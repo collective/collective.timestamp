@@ -74,8 +74,8 @@ msgid "Timestamp has failed."
 msgstr "L'horodatage a échoué."
 
 #: ../subscribers.py:21
-msgid "Timestamp information has been removed since the file has changed"
-msgstr "L'horodatage a été retiré étant donné que le fichier original a changé"
+msgid "Timestamp information has been removed since the data has changed"
+msgstr "L'horodatage a été retiré car les données ont changé"
 
 #: ../browser/templates/verification.pt:3
 msgid "Timestamp informations"

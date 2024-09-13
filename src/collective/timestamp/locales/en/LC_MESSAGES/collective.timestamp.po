@@ -72,7 +72,7 @@ msgid "Timestamp has failed."
 msgstr ""
 
 #: ../subscribers.py:21
-msgid "Timestamp information has been removed since the file has changed"
+msgid "Timestamp information has been removed since the data has changed"
 msgstr ""
 
 #: ../browser/templates/verification.pt:3

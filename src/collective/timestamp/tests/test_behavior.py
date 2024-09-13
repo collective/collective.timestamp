@@ -90,6 +90,6 @@ class TestBehavior(unittest.TestCase):
         show = messages.show()
         self.assertEqual(len(show), 2)
         self.assertIn(
-            "Timestamp information has been removed since the file has changed",
+            "Timestamp information has been removed since the data has changed",
             show[1].message,
         )

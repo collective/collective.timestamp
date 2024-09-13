@@ -18,5 +18,5 @@ def modified_content(obj, event):
     obj.reindexObject(idxs=["is_timestamped"])
     request = getattr(obj, "REQUEST", None)
     if request is not None:
-        message = _("Timestamp information has been removed since the file has changed")
+        message = _("Timestamp information has been removed since the data has changed")
         api.portal.show_message(message, request)
