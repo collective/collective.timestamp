@@ -1,0 +1,12 @@
+<tal:info xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="collective.timestamp">
+
+  <div class="alert alert-info"
+       role="alert"
+       tal:condition="view/available">
+    <span i18n:translate="">
+      You are editing a timestamped content. Your modifications can invalidate the timestamp.
+    </span>
+  </div>
+
+</tal:info>

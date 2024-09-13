@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from collective.timestamp.browser.viewlet import TimestampViewlet
+from collective.timestamp.browser.viewlets import TimestampViewlet
 from collective.timestamp.interfaces import ITimeStamper
 from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
 from plone import api

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from collective.timestamp.behaviors.timestamp import ITimestampableDocument
+from collective.timestamp.browser.viewlets import TimestampWarningViewlet
+from collective.timestamp.interfaces import ITimeStamper
 from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
 from plone import api
 from plone.app.dexterity.behaviors.metadata import IBasic
@@ -72,6 +74,21 @@ class TestBehavior(unittest.TestCase):
             show = messages.show()
             self.assertEqual(len(show), 2)
             self.assertIn("Timestamp has failed", show[1].message)
+
+    def test_warning_viewlet(self):
+        viewlet = TimestampWarningViewlet(self.document, self.request, None)
+        with self.assertRaises(TypeError):
+            viewlet.available()
+        viewlet = TimestampWarningViewlet(self.file, self.request, None)
+        self.assertFalse(viewlet.available())
+        self.file.file = NamedBlobFile(data=b"file data", filename="file.txt")
+        self.assertFalse(viewlet.available())
+        handler = ITimeStamper(self.file)
+        handler.timestamp()
+        self.assertTrue(viewlet.available())
+        viewlet.update()
+        html = viewlet.render()
+        self.assertIn("Your modifications can invalidate the timestamp.", html)
 
     def test_subscribers(self):
         self.file.file = NamedBlobFile(data=b"file data", filename="file.txt")

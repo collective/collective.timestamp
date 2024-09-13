@@ -11,3 +11,7 @@ class TimestampViewlet(common.ViewletBase):
     def available(self):
         handler = ITimeStamper(self.context)
         return handler.is_timestamped()
+
+
+class TimestampWarningViewlet(TimestampViewlet):
+    index = ViewPageTemplateFile("templates/warning_viewlet.pt")
