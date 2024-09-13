@@ -7,6 +7,7 @@ from plone.namedfile.file import NamedBlobFile
 from plone.namedfile.interfaces import INamedField
 from plone.rfc822.interfaces import IPrimaryFieldInfo
 from zope.interface import implementer
+from zope.lifecycleevent.interfaces import IAttributes
 
 
 @implementer(ITimeStamper)
@@ -36,6 +37,16 @@ class TimeStamper(object):
             )
             return
         return field.value.data
+
+    def file_has_changed(self, obj, event):
+        field = self.get_file_field()
+        fieldname = field.fieldname
+        for d in event.descriptions:
+            if not IAttributes.providedBy(d):
+                continue
+            if fieldname in d.attributes:
+                return True
+        return False
 
     def is_timestamped(self):
         return self.context.timestamp is not None
