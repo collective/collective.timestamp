@@ -3,6 +3,7 @@
 from collective.timestamp.behaviors.timestamp import ITimestampableDocument
 from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
 from plone import api
+from plone.app.dexterity.behaviors.metadata import IBasic
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.behavior.interfaces import IBehavior
@@ -12,6 +13,8 @@ from rfc3161ng import TimestampingError
 from unittest.mock import patch
 from zope.component import getMultiAdapter
 from zope.component import getUtility
+from zope.interface import Interface
+from zope.lifecycleevent import Attributes
 from zope.lifecycleevent import modified
 
 import unittest
@@ -72,4 +75,21 @@ class TestBehavior(unittest.TestCase):
 
     def test_subscribers(self):
         self.file.file = NamedBlobFile(data=b"file data", filename="file.txt")
-        modified(self.file)
+        modified(self.file, Attributes(IBasic, "IBasic.title"))
+        messages = IStatusMessage(self.request)
+        show = messages.show()
+        self.assertEqual(len(show), 0)
+        view = getMultiAdapter((self.file, self.request), name="timestamp_utils")
+        self.assertTrue(view.available())
+        view.timestamp()
+        self.assertFalse(view.available())
+        modified(self.file, Attributes(Interface, "file"))
+        self.assertTrue(view.available())
+        self.assertIsNone(self.file.timestamp)
+        messages = IStatusMessage(self.request)
+        show = messages.show()
+        self.assertEqual(len(show), 2)
+        self.assertIn(
+            "Timestamp information has been removed since the file has changed",
+            show[1].message,
+        )
