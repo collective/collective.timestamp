@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-09-13 09:45+0000\n"
+"POT-Creation-Date: 2024-09-13 12:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Timestamp file has been successfully generated and saved"
 msgstr ""
 
-#: ../browser/rule.py:61
+#: ../browser/rule.py:60
 msgid "Timestamp file has been successfully generated and saved for ${name}"
 msgstr ""
 
@@ -79,12 +79,12 @@ msgstr ""
 msgid "Timestamp informations"
 msgstr ""
 
-#: ../browser/configure.zcml:60
-#: ../browser/rule.py:27
+#: ../browser/configure.zcml:70
+#: ../browser/rule.py:26
 msgid "Timestamp object"
 msgstr ""
 
-#: ../browser/configure.zcml:60
+#: ../browser/configure.zcml:70
 msgid "Timestamp the triggering item"
 msgstr ""
 
@@ -112,12 +112,16 @@ msgstr ""
 msgid "URL of the timestamping service you want to use"
 msgstr ""
 
-#: ../browser/rule.py:73
+#: ../browser/rule.py:71
 msgid "Unable to timestamp ${name}: ${error}"
 msgstr ""
 
 #: ../profiles.zcml:31
 msgid "Uninstalls collective.timestamp"
+msgstr ""
+
+#: ../browser/templates/warning_viewlet.pt:7
+msgid "You are editing a timestamped content. Your modifications can invalidate the timestamp."
 msgstr ""
 
 #: ../profiles.zcml:14
