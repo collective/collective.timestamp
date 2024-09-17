@@ -41,8 +41,8 @@ msgid "TSR File"
 msgstr "Fichier TSR"
 
 #: ../behaviors/timestamp.py:32
-msgid "This allows you to disable timestamping for this specific content, for example to avoid this content to be automatically timestamped."
-msgstr "Ceci vous permet de désactiver l'horodatage pour ce contenu spécifique, par exemple pour qu'il ne soit pas automatiquement horodaté."
+msgid "This allows you to disable timestamping for this specific content."
+msgstr "Ceci vous permet de désactiver l'horodatage pour cette publication."
 
 #: ../browser/templates/verification.pt:42
 msgid "This content is not timestamped."

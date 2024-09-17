@@ -29,10 +29,7 @@ class ITimestampableDocument(model.Schema):
 
     enable_timestamping = schema.Bool(
         title=_("Enable timestamping"),
-        description=_(
-            "This allows you to disable timestamping for this specific content, "
-            "for example to avoid this content to be automatically timestamped."
-        ),
+        description=_("This allows you to disable timestamping for this specific content."),
         default=True,
         required=False,
     )
