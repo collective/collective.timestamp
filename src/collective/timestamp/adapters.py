@@ -70,8 +70,6 @@ class TimeStamper(object):
             data=timestamp["tsr"], filename="timestamp.tsr"
         )
         self.context.setEffectiveDate(timestamp["timestamp_date"])
-        self.context.reindexObject(
-            idxs=self._effective_related_indexes()
-        )
+        self.context.reindexObject(idxs=self._effective_related_indexes())
         # return data and timestamp in case method is overrided
         return data, timestamp
