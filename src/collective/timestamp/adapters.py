@@ -58,14 +58,20 @@ class TimeStamper(object):
             return False
         return self.get_data() is not None
 
+    def _effective_related_indexes(self):
+        return ["effective", "effectiveRange", "is_timestamped"]
+
     def timestamp(self):
         if not self.is_timestampable():
             raise ValueError("This content is not timestampable")
-        timestamp = get_timestamp(self.get_data())
+        data = self.get_data()
+        timestamp = get_timestamp(data)
         self.context.timestamp = NamedBlobFile(
             data=timestamp["tsr"], filename="timestamp.tsr"
         )
         self.context.setEffectiveDate(timestamp["timestamp_date"])
         self.context.reindexObject(
-            idxs=["effective", "effectiveRange", "is_timestamped"]
+            idxs=self._effective_related_indexes()
         )
+        # return data and timestamp in case method is overrided
+        return data, timestamp
