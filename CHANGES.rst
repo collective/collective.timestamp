@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0a2 (unreleased)
+1.0a2 (2024-10-11)
 ------------------
 
 - Added `TimeStamper._effective_related_indexes` to factorize the list of
