@@ -2,10 +2,13 @@ Changelog
 =========
 
 
-1.0a3 (unreleased)
-------------------
+1.0 (unreleased)
+----------------
 
-- Nothing changed yet.
+- Refactor the `timestamp` utils function to be able to use failover urls and exp. backoff retries.
+  [aduchene]
+- Add settings to manage failover urls and exp. backoff retries.
+  [aduchene]
 
 
 1.0a2 (2024-10-11)

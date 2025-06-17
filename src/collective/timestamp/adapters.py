@@ -2,13 +2,15 @@
 
 from collective.timestamp import logger
 from collective.timestamp.interfaces import ITimeStamper
-from collective.timestamp.utils import get_timestamp
+from collective.timestamp.interfaces import ITimestampingSettings
+from collective.timestamp.utils import timestamp
 from plone.namedfile.file import NamedBlobFile
 from plone.namedfile.interfaces import INamedField
+from plone.registry.interfaces import IRegistry
 from plone.rfc822.interfaces import IPrimaryFieldInfo
+from zope.component import getUtility
 from zope.interface import implementer
 from zope.lifecycleevent.interfaces import IAttributes
-
 
 @implementer(ITimeStamper)
 class TimeStamper(object):
@@ -61,15 +63,27 @@ class TimeStamper(object):
     def _effective_related_indexes(self):
         return ["effective", "effectiveRange", "is_timestamped"]
 
+    def generate_timestamp(self, file_content: bytes):
+        """Produce the .tsr blob and the datetime when it was created, using the registry settings."""
+        settings = getUtility(IRegistry).forInterface(ITimestampingSettings)
+        return timestamp(
+            file_content,
+            service_url=settings.timestamping_service_url,
+            hashing_algorithm=settings.hashing_algorithm,
+            use_failover=settings.use_failover,
+            failover_timestamping_service_urls=settings.failover_timestamping_service_urls,
+            max_retries=settings.max_retries,
+            initial_backoff_seconds=settings.initial_backoff_seconds,
+        )
+
     def timestamp(self):
+        """Timestamp this context: attach the .tsr file, set the effective date, and reindex."""
         if not self.is_timestampable():
             raise ValueError("This content is not timestampable")
         data = self.get_data()
-        timestamp = get_timestamp(data)
-        self.context.timestamp = NamedBlobFile(
-            data=timestamp["tsr"], filename="timestamp.tsr"
-        )
-        self.context.setEffectiveDate(timestamp["timestamp_date"])
+        tsr_file, timestamp_date = self.generate_timestamp(data)
+        self.context.timestamp = NamedBlobFile(data=tsr_file, filename="timestamp.tsr")
+        self.context.setEffectiveDate(timestamp_date)
         self.context.reindexObject(idxs=self._effective_related_indexes())
         # return data and timestamp in case method is overrided
         return data, timestamp
