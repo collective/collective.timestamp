@@ -12,6 +12,7 @@ from zope.component import getUtility
 from zope.interface import implementer
 from zope.lifecycleevent.interfaces import IAttributes
 
+
 @implementer(ITimeStamper)
 class TimeStamper(object):
     """Handle timestamping operations on an object"""

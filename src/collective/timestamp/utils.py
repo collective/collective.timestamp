@@ -15,6 +15,7 @@ def localize_utc_date(date: datetime):
     tzinfo = pytz.timezone("UTC")
     return tzinfo.localize(date)
 
+
 def get_timestamp_date(timestamp_token: TimeStampToken, localize=True):
     """
     Extract the timestamp date from a time stamp token.
@@ -27,11 +28,13 @@ def get_timestamp_date(timestamp_token: TimeStampToken, localize=True):
         return localize_utc_date(timestamp_date)
     return timestamp_date
 
+
 def get_timestamp_date_from_tsr_file(tsr_data: bytes, localize: bool = True):
     """Extracts the timestamp date from a tsr file"""
     tsr, _ = decoder.decode(tsr_data, asn1Spec=TimeStampResp())
     timestamp_token = tsr.time_stamp_token
     return get_timestamp_date(timestamp_token, localize=localize)
+
 
 def timestamp(
     file_content: bytes,
@@ -41,7 +44,7 @@ def timestamp(
     failover_timestamping_service_urls: list = None,
     max_retries: int = 0,
     initial_backoff_seconds: float = 0.5,
-    localize_date: bool = True
+    localize_date: bool = True,
 ):
     """
     Generate a timestamp for the given file_content using a remote timestamping service.
@@ -88,7 +91,9 @@ def timestamp(
                     time.sleep(backoff_seconds)
                     backoff_seconds *= 2
                 else:
-                    logger.error(f"Reached max retries ({max_retries}) for URL: {service_url}")
+                    logger.error(
+                        f"Reached max retries ({max_retries}) for URL: {service_url}"
+                    )
 
         if success:
             break
