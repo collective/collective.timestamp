@@ -5,7 +5,8 @@ Changelog
 1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fix a bug with TimeStamper.timestamp not returning the correct value.
+  [aduchene]
 
 
 1.0 (2025-06-19)

@@ -87,4 +87,4 @@ class TimeStamper(object):
         self.context.setEffectiveDate(timestamp_date)
         self.context.reindexObject(idxs=self._effective_related_indexes())
         # return data and timestamp in case method is overrided
-        return data, timestamp
+        return data, timestamp_date

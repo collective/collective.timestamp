@@ -2,6 +2,7 @@
 
 from collective.timestamp.interfaces import ITimeStamper
 from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
+from datetime import datetime
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -83,7 +84,11 @@ class TestAdapter(unittest.TestCase):
         first_effective_index = indexes.get("effective")
         first_effective_range_index = indexes.get("effectiveRange")
         self.assertFalse(indexes.get("is_timestamped"))
-        handler.timestamp()
+        data, timestamp_date = handler.timestamp()
+        self.assertIsInstance(data, bytes)
+        self.assertIsInstance(timestamp_date, datetime)
+        self.assertEqual(data, self.file.file.data)
+        self.assertEqual(timestamp_date, self.file.effective().asdatetime())
         self.assertIsNotNone(self.file.timestamp)
         self.assertNotEqual(first_effective_date, self.file.effective())
         brain = api.content.find(UID=uuid)[0]
