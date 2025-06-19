@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.1 (unreleased)
+1.1 (2025-06-19)
 ----------------
 
 - Fix a bug with TimeStamper.timestamp not returning the correct value.
