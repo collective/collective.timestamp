@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0 (unreleased)
+1.0 (2025-06-19)
 ----------------
 
 - Refactor the `timestamp` utils function to be able to use failover urls and exp. backoff retries.
