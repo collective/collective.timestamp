@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.2 (unreleased)
+1.2 (2025-06-19)
 ----------------
 
 - Fixed a bug with `utils.timestamp` stuck in an infinite loop when use_failover was False.
