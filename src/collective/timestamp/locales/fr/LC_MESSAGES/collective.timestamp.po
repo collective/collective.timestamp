@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-09-13 12:03+0000\n"
+"POT-Creation-Date: 2025-06-19 09:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,6 +15,10 @@ msgstr ""
 "Domain: DOMAIN\n"
 "Language: fr\n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
+
+#: ../interfaces.py:28
+msgid "Choose the hashing algorithm that will be used for generating timestamps."
+msgstr "Choisissez l'algorithme de hachage qui sera utilisé pour générer les horodatages."
 
 #: ../profiles/default/actions.xml
 msgid "Click to timestamp this content."
@@ -32,6 +36,26 @@ msgstr "Téléchargez le fichier horodaté ici :"
 msgid "Enable timestamping"
 msgstr "Activer l'horodatage"
 
+#: ../interfaces.py:27
+msgid "Hashing algorithm to use for timestamping"
+msgstr "Algorithme de hachage à utiliser pour l'horodatage"
+
+#: ../interfaces.py:50
+msgid "If enabled, additional timestamping services will be used if the main service is unavailable."
+msgstr "Si activé, des services d'horodatage supplémentaires seront utilisés si le service principal n'est pas disponible."
+
+#: ../interfaces.py:42
+msgid "Initial backoff time in seconds"
+msgstr "Temps d'attente initial en secondes."
+
+#: ../interfaces.py:56
+msgid "List of failover timestamping service URLs"
+msgstr "Liste des URL de services d'horodatage de secours"
+
+#: ../interfaces.py:35
+msgid "Maximum number of retries for timestamping"
+msgstr "Maximum de tentatives pour l'horodatage"
+
 #: ../browser/templates/verification.pt:31
 msgid "More Info"
 msgstr "Plus d'informations"
@@ -39,6 +63,18 @@ msgstr "Plus d'informations"
 #: ../browser/templates/verification.pt:18
 msgid "TSR File"
 msgstr "Fichier TSR"
+
+#: ../interfaces.py:43
+msgid "The initial time to wait before retrying a failed timestamping attempt."
+msgstr "Le temps initial à attendre avant de réessayer une tentative d'horodatage échouée. Ce paramètre est utilisé pour éviter de surcharger le service d'horodatage en cas d'échec.<br>L'algorithme de backoff exponentiel est utilisé pour augmenter progressivement le temps d'attente entre les tentatives."
+
+#: ../interfaces.py:36
+msgid "The maximum number of attempts to retry timestamping in case of failure."
+msgstr "Le nombre maximum de tentatives supplémentaires pour réessayer l'horodatage en cas d'échec."
+
+#: ../interfaces.py:57
+msgid "These services will be used if the main service is unavailable."
+msgstr "Ces services seront utilisés si le service principal n'est pas disponible."
 
 #: ../behaviors/timestamp.py:32
 msgid "This allows you to disable timestamping for this specific content."
@@ -81,12 +117,12 @@ msgstr "L'horodatage a été retiré car les données ont changé"
 msgid "Timestamp informations"
 msgstr "Informations d'horodatage"
 
-#: ../browser/configure.zcml:70
+#: ../browser/configure.zcml:60
 #: ../browser/rule.py:26
 msgid "Timestamp object"
 msgstr "Horodater le contenu"
 
-#: ../browser/configure.zcml:70
+#: ../browser/configure.zcml:60
 msgid "Timestamp the triggering item"
 msgstr "Horodater l'élément déclencheur"
 
@@ -106,7 +142,7 @@ msgstr "Paramètres d'horodatage"
 msgid "Timestamping support for Plone content types"
 msgstr "Support de l'horodatage pour les types de contenus Plone"
 
-#: ../interfaces.py:27
+#: ../interfaces.py:64
 msgid "URL of the documentation explaining how to verify timestamps"
 msgstr "Adresse URL de la documentation expliquant comment vérifier les horodatages"
 
@@ -122,7 +158,11 @@ msgstr "Incapable d'horodater ${name}: ${error}"
 msgid "Uninstalls collective.timestamp"
 msgstr "Désinstalle collective.timestamp"
 
-#: ../browser/templates/warning_viewlet.pt:7
+#: ../interfaces.py:49
+msgid "Use failover timestamping"
+msgstr "Utiliser l'horodatage de secours"
+
+#: ../subscribers.py:32
 msgid "You are editing a timestamped content. Your modifications can invalidate the timestamp."
 msgstr "Vous éditez un contenu horodaté. Vos modifications peuvent invalider l'horodatage."
 
