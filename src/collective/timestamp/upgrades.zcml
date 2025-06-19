@@ -5,10 +5,10 @@
   <genericsetup:upgradeSteps
     source="1000"
     destination="1001"
-    profile="imio.webspellchecker:default">
+    profile="collective.timestamp:default">
     <genericsetup:upgradeDepends
-      title="Update imio.webspellchecker registry"
-      import_profile="imio.webspellchecker:base"
+      title="Update collective.timestamp registry"
+      import_profile="collective.timestamp:default"
       import_steps="plone.app.registry"
       run_deps="True"/>
   </genericsetup:upgradeSteps>
