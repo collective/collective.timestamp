@@ -86,7 +86,7 @@ def timestamp(
             except Exception as e:
                 retry_count += 1
                 logger.error(f"Timestamping attempt {retry_count} failed: {e}")
-                if retry_count < max_retries:
+                if retry_count <= max_retries:
                     logger.info(f"Retrying in {backoff_seconds} seconds...")
                     time.sleep(backoff_seconds)
                     backoff_seconds *= 2
