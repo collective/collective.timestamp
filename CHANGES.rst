@@ -5,8 +5,10 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Fixed a bug with `utils.timestamp` stuck in an infinite loop when use_failover was False.
+  [aduchene]
+- Changed default values of `ITimestampingSettings` and set required fields.
+  [aduchene]
 
 1.1 (2025-06-19)
 ----------------

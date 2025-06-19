@@ -38,8 +38,8 @@ class ITimestampingSettings(Interface):
         description=_(
             "The maximum number of attempts to retry timestamping in case of failure."
         ),
-        default=1,
-        required=False,
+        default=0,
+        required=True,
     )
 
     initial_backoff_seconds = schema.Float(
@@ -47,8 +47,8 @@ class ITimestampingSettings(Interface):
         description=_(
             "The initial time to wait before retrying a failed timestamping attempt."
         ),
-        default=1.0,
-        required=False,
+        default=0.5,
+        required=True,
     )
 
     use_failover = schema.Bool(

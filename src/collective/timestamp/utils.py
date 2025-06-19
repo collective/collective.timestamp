@@ -95,7 +95,8 @@ def timestamp(
                         f"Reached max retries ({max_retries}) for URL: {service_url}"
                     )
 
-        if success:
+        if success or not use_failover:
+            # If we succeeded or not using failover, we can exit the loop
             break
 
         if use_failover:
@@ -105,7 +106,7 @@ def timestamp(
             service_url = failover_timestamping_service_urls.pop(0)
             logger.info(f"Switching to failover URL: {service_url}")
     if not success:
-        raise ConnectionError("Failed to obtain a timestamp after all retries.")
+        raise ConnectionError("Failed to obtain a timestamp.")
 
     timestamp_token = tsr.time_stamp_token
     timestamp_date = get_timestamp_date(timestamp_token, localize=localize_date)
