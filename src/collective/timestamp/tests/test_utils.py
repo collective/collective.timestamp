@@ -41,20 +41,27 @@ class TestUtils(unittest.TestCase):
         tsr, timestamp_date = timestamp(self.file_data, "http://freetsa.org/tsr")
         self.assertIsInstance(tsr, bytes)
         self.assertIsInstance(timestamp_date, datetime)
-        self.assertAlmostEqual(timestamp_date, datetime.now(pytz.UTC), delta=timedelta(seconds=10))
+        self.assertAlmostEqual(
+            timestamp_date, datetime.now(pytz.UTC), delta=timedelta(seconds=10)
+        )
 
     def test_timestamp_retries(self):
         tsr, timestamp_date = timestamp(
             self.file_data,
             "https://httpbin.org/status/429",
             use_failover=True,
-            failover_timestamping_service_urls=["https://httpbin.org/status/429", "http://freetsa.org/tsr"],
+            failover_timestamping_service_urls=[
+                "https://httpbin.org/status/429",
+                "http://freetsa.org/tsr",
+            ],
             max_retries=2,
             initial_backoff_seconds=0.1,
         )
         self.assertIsInstance(tsr, bytes)
         self.assertIsInstance(timestamp_date, datetime)
-        self.assertAlmostEqual(timestamp_date, datetime.now(pytz.UTC), delta=timedelta(seconds=10))
+        self.assertAlmostEqual(
+            timestamp_date, datetime.now(pytz.UTC), delta=timedelta(seconds=10)
+        )
 
     def test_timestamp_raises_connection_error(self):
         with self.assertRaises(ConnectionError):
@@ -71,4 +78,6 @@ class TestUtils(unittest.TestCase):
         tsr, timestamp_date = timestamp(self.file_data, "http://freetsa.org/tsr")
         verif_date = get_timestamp_date_from_tsr_file(tsr)
         self.assertEqual(timestamp_date, verif_date)
-        self.assertAlmostEqual(verif_date, datetime.now(pytz.UTC), delta=timedelta(seconds=10))
+        self.assertAlmostEqual(
+            verif_date, datetime.now(pytz.UTC), delta=timedelta(seconds=10)
+        )
