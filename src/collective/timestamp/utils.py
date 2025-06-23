@@ -41,7 +41,7 @@ def timestamp(
     service_url: str,
     hashing_algorithm: str = "sha256",
     use_failover: bool = False,
-    failover_timestamping_service_urls: list = None,
+    failover_timestamping_service_urls: list = (),
     max_retries: int = 0,
     initial_backoff_seconds: float = 0.5,
     localize_date: bool = True,
@@ -63,7 +63,8 @@ def timestamp(
     """
     success = False
     tsr = None
-
+    # Make a copy to avoid modifying the original list
+    failover_urls = failover_timestamping_service_urls.copy()
     while not success:
         retry_count = 0
         backoff_seconds = initial_backoff_seconds
@@ -100,10 +101,10 @@ def timestamp(
             break
 
         if use_failover:
-            if not failover_timestamping_service_urls:
+            if not failover_urls:
                 logger.error("No failover URLs available, cannot proceed.")
                 break
-            service_url = failover_timestamping_service_urls.pop(0)
+            service_url = failover_urls.pop(0)
             logger.info(f"Switching to failover URL: {service_url}")
     if not success:
         raise ConnectionError("Failed to obtain a timestamp.")

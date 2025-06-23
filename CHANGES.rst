@@ -5,7 +5,8 @@ Changelog
 1.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Avoid modifying list passed as argument in `utils.timestamp`.
+  [aduchene]
 
 
 1.2 (2025-06-19)
@@ -15,6 +16,7 @@ Changelog
   [aduchene]
 - Changed default values of `ITimestampingSettings` and set required fields.
   [aduchene]
+
 
 1.1 (2025-06-19)
 ----------------
