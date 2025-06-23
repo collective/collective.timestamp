@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.3 (unreleased)
+1.3 (2025-06-23)
 ----------------
 
 - Avoid modifying list passed as argument in `utils.timestamp`.
