@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-06-19 09:19+0000\n"
+"POT-Creation-Date: 2025-08-25 12:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,18 @@ msgstr ""
 "Language: fr\n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
+#: ../browser/infos.py:189
+msgid "0 second (exact)"
+msgstr "0 seconde (exact)"
+
+#: ../browser/templates/infos.pt:25
+msgid "Back to content"
+msgstr "Retourner vers le contenu"
+
+#: ../browser/templates/infos.pt:174
+msgid "Certificate Chain"
+msgstr "Chaîne de certificats"
+
 #: ../interfaces.py:28
 msgid "Choose the hashing algorithm that will be used for generating timestamps."
 msgstr "Choisissez l'algorithme de hachage qui sera utilisé pour générer les horodatages."
@@ -24,55 +36,75 @@ msgstr "Choisissez l'algorithme de hachage qui sera utilisé pour générer les 
 msgid "Click to timestamp this content."
 msgstr "Cliquez pour horodater ce contenu."
 
-#: ../browser/templates/verification.pt:17
-msgid "Download the .TSR file here :"
-msgstr "Téléchargez le fichier .TSR ici :"
+#: ../browser/templates/infos.pt:219
+msgid "Content Not Timestamped"
+msgstr "Le contenu n'est pas horodaté"
 
-#: ../browser/templates/verification.pt:23
-msgid "Download the timestamped file here :"
-msgstr "Téléchargez le fichier horodaté ici :"
+#: ../browser/templates/infos.pt:15
+msgid "Detailed information about the timestamping of this content."
+msgstr "Informations détaillées sur l'horodatage de ce contenu."
 
 #: ../behaviors/timestamp.py:31
 msgid "Enable timestamping"
 msgstr "Activer l'horodatage"
 
+#: ../browser/templates/infos.pt:144
+msgid "Hash Algorithm"
+msgstr "Algorithme de hachage"
+
+#: ../browser/templates/infos.pt:148
+msgid "Hashed Message"
+msgstr "Hash du message"
+
 #: ../interfaces.py:27
 msgid "Hashing algorithm to use for timestamping"
 msgstr "Algorithme de hachage à utiliser pour l'horodatage"
 
-#: ../interfaces.py:50
+#: ../interfaces.py:56
 msgid "If enabled, additional timestamping services will be used if the main service is unavailable."
 msgstr "Si activé, des services d'horodatage supplémentaires seront utilisés si le service principal n'est pas disponible."
 
-#: ../interfaces.py:42
+#: ../interfaces.py:46
 msgid "Initial backoff time in seconds"
 msgstr "Temps d'attente initial en secondes."
 
-#: ../interfaces.py:56
+#: ../browser/templates/infos.pt:183
+msgid "Issuer CN"
+msgstr "Émetteur CN"
+
+#: ../interfaces.py:64
 msgid "List of failover timestamping service URLs"
 msgstr "Liste des URL de services d'horodatage de secours"
 
-#: ../interfaces.py:35
+#: ../interfaces.py:37
 msgid "Maximum number of retries for timestamping"
 msgstr "Maximum de tentatives pour l'horodatage"
 
-#: ../browser/templates/verification.pt:31
-msgid "More Info"
-msgstr "Plus d'informations"
+#: ../browser/templates/infos.pt:211
+msgid "More about timestamping"
+msgstr "Plus d'informations sur l'horodatage"
 
-#: ../browser/templates/verification.pt:18
-msgid "TSR File"
-msgstr "Fichier TSR"
+#: ../browser/infos.py:177
+msgid "Not specified"
+msgstr "Non spécifié"
 
-#: ../interfaces.py:43
+#: ../browser/templates/infos.pt:146
+msgid "Serial"
+msgstr "Numéro de série"
+
+#: ../browser/templates/infos.pt:182
+msgid "Subject CN"
+msgstr "Sujet CN"
+
+#: ../interfaces.py:47
 msgid "The initial time to wait before retrying a failed timestamping attempt."
 msgstr "Le temps initial à attendre avant de réessayer une tentative d'horodatage échouée. Ce paramètre est utilisé pour éviter de surcharger le service d'horodatage en cas d'échec.<br>L'algorithme de backoff exponentiel est utilisé pour augmenter progressivement le temps d'attente entre les tentatives."
 
-#: ../interfaces.py:36
+#: ../interfaces.py:38
 msgid "The maximum number of attempts to retry timestamping in case of failure."
 msgstr "Le nombre maximum de tentatives supplémentaires pour réessayer l'horodatage en cas d'échec."
 
-#: ../interfaces.py:57
+#: ../interfaces.py:65
 msgid "These services will be used if the main service is unavailable."
 msgstr "Ces services seront utilisés si le service principal n'est pas disponible."
 
@@ -80,15 +112,12 @@ msgstr "Ces services seront utilisés si le service principal n'est pas disponib
 msgid "This allows you to disable timestamping for this specific content."
 msgstr "Ceci vous permet de désactiver l'horodatage pour cette publication."
 
-#: ../browser/templates/verification.pt:42
+#: ../browser/templates/infos.pt:220
 msgid "This content is not timestamped."
 msgstr "Ce contenu n'est pas horodaté"
 
-#: ../browser/templates/verification.pt:11
-msgid "This content was timestamped on"
-msgstr "Ce contenu a été horodaté le"
-
 #: ../behaviors/timestamp.py:26
+#: ../browser/templates/infos.pt:106
 msgid "Time Stamp Response (TSR) file"
 msgstr "Fichier d'horodatage (TSR)"
 
@@ -96,6 +125,14 @@ msgstr "Fichier d'horodatage (TSR)"
 #: ../profiles/default/actions.xml
 msgid "Timestamp"
 msgstr "Horodater"
+
+#: ../browser/templates/infos.pt:158
+msgid "Timestamp Authority (TSA)"
+msgstr "Autorité d'horodatage (TSA)"
+
+#: ../browser/templates/infos.pt:11
+msgid "Timestamp Information"
+msgstr "Informations d'horodatage"
 
 #: ../browser/action.py:41
 msgid "Timestamp file has been successfully generated and saved"
@@ -113,10 +150,6 @@ msgstr "L'horodatage a échoué."
 msgid "Timestamp information has been removed since the data has changed"
 msgstr "L'horodatage a été retiré car les données ont changé"
 
-#: ../browser/templates/verification.pt:3
-msgid "Timestamp informations"
-msgstr "Informations d'horodatage"
-
 #: ../browser/configure.zcml:60
 #: ../browser/rule.py:26
 msgid "Timestamp object"
@@ -130,9 +163,17 @@ msgstr "Horodater l'élément déclencheur"
 msgid "Timestamped"
 msgstr "Horodaté"
 
-#: ../browser/templates/verification.pt:24
-msgid "Timestamped File"
+#: ../browser/templates/infos.pt:93
+msgid "Timestamped file"
 msgstr "Fichier horodaté"
+
+#: ../browser/templates/infos.pt:32
+msgid "Timestamped item"
+msgstr "Élément horodaté"
+
+#: ../browser/templates/infos.pt:139
+msgid "Timestamped on"
+msgstr "Horodaté le"
 
 #: ../browser/controlpanel.py:11
 msgid "Timestamping settings"
@@ -142,7 +183,7 @@ msgstr "Paramètres d'horodatage"
 msgid "Timestamping support for Plone content types"
 msgstr "Support de l'horodatage pour les types de contenus Plone"
 
-#: ../interfaces.py:64
+#: ../interfaces.py:74
 msgid "URL of the documentation explaining how to verify timestamps"
 msgstr "Adresse URL de la documentation expliquant comment vérifier les horodatages"
 
@@ -158,9 +199,17 @@ msgstr "Incapable d'horodater ${name}: ${error}"
 msgid "Uninstalls collective.timestamp"
 msgstr "Désinstalle collective.timestamp"
 
-#: ../interfaces.py:49
+#: ../interfaces.py:55
 msgid "Use failover timestamping"
 msgstr "Utiliser l'horodatage de secours"
+
+#: ../browser/templates/infos.pt:185
+msgid "Valid From"
+msgstr "Valide depuis"
+
+#: ../browser/templates/infos.pt:186
+msgid "Valid To"
+msgstr "Valide jusqu'à"
 
 #: ../subscribers.py:32
 msgid "You are editing a timestamped content. Your modifications can invalidate the timestamp."
@@ -181,3 +230,62 @@ msgstr ""
 #: ../profiles.zcml:22
 msgid "collective.timestamp testing profile"
 msgstr ""
+
+#. Default: "Common Name"
+#: ../browser/infos.py:14
+msgid "label_common_name"
+msgstr "Nom commun"
+
+#. Default: "Country"
+#: ../browser/infos.py:20
+msgid "label_country_name"
+msgstr "Pays"
+
+#. Default: "Domain"
+#: ../browser/infos.py:23
+msgid "label_domain_component"
+msgstr "Composant du domaine"
+
+#. Default: "E-mail"
+#: ../browser/infos.py:22
+msgid "label_email_address"
+msgstr "Adresse e-mail"
+
+#. Default: "General Name"
+#: ../browser/infos.py:143
+msgid "label_general_name"
+msgstr "Nom général"
+
+#. Default: "Locality"
+#: ../browser/infos.py:18
+msgid "label_locality_name"
+msgstr "Localité"
+
+#. Default: "Organization Identifier"
+#: ../browser/infos.py:15
+msgid "label_organization_identifier"
+msgstr "Identifiant de l'organisation"
+
+#. Default: "Organization"
+#: ../browser/infos.py:16
+msgid "label_organization_name"
+msgstr "Organisation"
+
+#. Default: "Org. Unit"
+#: ../browser/infos.py:17
+msgid "label_organizational_unit_name"
+msgstr "Unité organisationnelle"
+
+#. Default: "Serial Number"
+#: ../browser/infos.py:21
+msgid "label_serial_number"
+msgstr "Numéro de série"
+
+#. Default: "State / Province"
+#: ../browser/infos.py:19
+msgid "label_state_province_name"
+msgstr "Province / État"
+
+#: ../browser/infos.py:199
+msgid "{} second(s)"
+msgstr "{} seconde(s)"

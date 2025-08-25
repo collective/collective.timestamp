@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from collective.timestamp.behaviors.timestamp import ITimestampableDocument
-from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_FUNCTIONAL_TESTING
+from collective.timestamp.tests import TimestampFunctionalTestCase
 from plone import api
 from plone.app.dexterity.behaviors.metadata import IBasic
 from plone.app.testing import setRoles
@@ -24,25 +24,7 @@ import transaction
 import unittest
 
 
-class TestBehavior(unittest.TestCase):
-
-    layer = COLLECTIVE_TIMESTAMP_FUNCTIONAL_TESTING
-
-    def setUp(self):
-        """Custom shared utility setup for tests."""
-        self.request = self.layer["request"]
-        self.portal = self.layer["portal"]
-        setRoles(self.portal, TEST_USER_ID, ["Manager"])
-        self.document = api.content.create(
-            container=self.portal,
-            type="Document",
-            id="my-document",
-        )
-        self.file = api.content.create(
-            container=self.portal,
-            type="File",
-            id="my-file",
-        )
+class TestBehavior(TimestampFunctionalTestCase):
 
     def test_behavior_interface(self):
         behavior = getUtility(IBehavior, "collective.timestamp")

@@ -55,6 +55,7 @@ setup(
         "plone.api>=1.8.4",
         "plone.app.dexterity",
         "rfc3161ng",
+        "asn1crypto"
     ],
     extras_require={
         "test": [

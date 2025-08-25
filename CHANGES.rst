@@ -5,7 +5,8 @@ Changelog
 1.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add a new view `TimestampInfo` to have more info about the timestamp that can also be used as an util view.
+  [aduchene]
 
 
 1.3 (2025-06-23)
