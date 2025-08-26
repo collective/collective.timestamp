@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-
 from collective.timestamp.browser.viewlet import TimestampViewlet
 from collective.timestamp.interfaces import ITimeStamper
 from collective.timestamp.tests import TimestampIntegrationTestCase
+from datetime import datetime
 from plone.app.testing import logout
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -10,7 +10,7 @@ from plone.namedfile.file import NamedBlobFile
 from zope.component import getMultiAdapter
 from zope.interface.interfaces import ComponentLookupError
 
-import datetime
+import pytz
 
 
 class TestInfos(TimestampIntegrationTestCase):
@@ -58,7 +58,8 @@ class TestInfos(TimestampIntegrationTestCase):
         )
         self.assertTrue(timestamped_view.is_timestamped())
         self.assertEqual(
-            timestamped_view.timestamp_date().isoformat(), "2025-08-25T16:49:08+02:00"
+            timestamped_view.timestamp_date(),
+            datetime(2025, 8, 25, 14, 49, 8, tzinfo=pytz.UTC),
         )
 
     def test_timestamp_authority(self):
@@ -185,8 +186,8 @@ class TestInfos(TimestampIntegrationTestCase):
         self.assertIsInstance(first["self_issued"], bool)
         self.assertIsInstance(first["has_ski"], bool)
         self.assertIsInstance(first["has_aki"], bool)
-        self.assertIsInstance(first["not_before"], datetime.datetime)
-        self.assertIsInstance(first["not_after"], datetime.datetime)
+        self.assertIsInstance(first["not_before"], datetime)
+        self.assertIsInstance(first["not_after"], datetime)
         self.assertLess(first["not_before"], first["not_after"])
 
     def test_timestamp_signer_subject_mapping(self):
