@@ -22,10 +22,10 @@
       />
 
   <browser:page
-      name="timestamp"
+      name="timestamp-info"
       for="collective.timestamp.behaviors.timestamp.ITimestampableDocument"
-      class=".verification.VerificationView"
-      template="templates/verification.pt"
+      class=".infos.TimestampInfo"
+      template="templates/infos.pt"
       permission="zope2.View"
       layer="collective.timestamp.interfaces.ICollectiveTimestampLayer"
       />
@@ -47,7 +47,7 @@
       class=".rule.TimestampAddForm"
       permission="plone.app.contentrules.ManageContentRules"
       />
-  
+
   <plone:ruleAction
       name="collective.timestamp.actions.Timestamp"
       title="Timestamp object"

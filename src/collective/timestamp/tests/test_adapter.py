@@ -2,6 +2,7 @@
 
 from collective.timestamp.interfaces import ITimeStamper
 from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
+from collective.timestamp.tests import TimestampIntegrationTestCase
 from datetime import datetime
 from plone import api
 from plone.app.testing import setRoles
@@ -12,25 +13,7 @@ from plone.uuid.interfaces import IUUID
 import unittest
 
 
-class TestAdapter(unittest.TestCase):
-
-    layer = COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
-
-    def setUp(self):
-        """Custom shared utility setup for tests."""
-        self.request = self.layer["request"]
-        self.portal = self.layer["portal"]
-        setRoles(self.portal, TEST_USER_ID, ["Manager"])
-        self.document = api.content.create(
-            container=self.portal,
-            type="Document",
-            id="my-document",
-        )
-        self.file = api.content.create(
-            container=self.portal,
-            type="File",
-            id="my-file",
-        )
+class TestAdapter(TimestampIntegrationTestCase):
 
     def test_adapter(self):
         with self.assertRaises(TypeError):

@@ -1,14 +1,14 @@
-import time
-
-import pytz
 from collective.timestamp import logger
 from datetime import datetime
 from pyasn1.codec.der import decoder
 from pyasn1.codec.der import encoder
-from rfc3161ng import RemoteTimestamper
-from rfc3161ng import TimeStampToken
-from rfc3161ng import TimeStampResp
 from rfc3161ng import get_timestamp
+from rfc3161ng import RemoteTimestamper
+from rfc3161ng import TimeStampResp
+from rfc3161ng import TimeStampToken
+
+import pytz
+import time
 
 
 def localize_utc_date(date: datetime):
@@ -41,7 +41,7 @@ def timestamp(
     service_url: str,
     hashing_algorithm: str = "sha256",
     use_failover: bool = False,
-    failover_timestamping_service_urls: list = (),
+    failover_timestamping_service_urls: list = None,
     max_retries: int = 0,
     initial_backoff_seconds: float = 0.5,
     localize_date: bool = True,
@@ -64,7 +64,11 @@ def timestamp(
     success = False
     tsr = None
     # Make a copy to avoid modifying the original list
-    failover_urls = failover_timestamping_service_urls.copy()
+    failover_urls = (
+        failover_timestamping_service_urls.copy()
+        if failover_timestamping_service_urls
+        else []
+    )
     while not success:
         retry_count = 0
         backoff_seconds = initial_backoff_seconds

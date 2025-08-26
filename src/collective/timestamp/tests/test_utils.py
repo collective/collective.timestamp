@@ -1,35 +1,25 @@
 # -*- coding: utf-8 -*-
-
-from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
-from collective.timestamp.utils import timestamp
+from collective.timestamp.tests import TimestampIntegrationTestCase
 from collective.timestamp.utils import get_timestamp_date_from_tsr_file
 from collective.timestamp.utils import localize_utc_date
-from datetime import datetime, timedelta
-from plone import api
+from collective.timestamp.utils import timestamp
+from datetime import datetime
+from datetime import timedelta
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.namedfile.file import NamedBlobFile
+from unittest.mock import patch
 
-import unittest
 import pytz
 
 
-class TestUtils(unittest.TestCase):
-
-    layer = COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
+class TestUtils(TimestampIntegrationTestCase):
 
     def setUp(self):
-        """Custom shared utility setup for tests."""
-        self.request = self.layer["request"]
-        self.portal = self.layer["portal"]
-        setRoles(self.portal, TEST_USER_ID, ["Manager"])
-        self.my_file = api.content.create(
-            container=self.portal,
-            type="File",
-            id="my-file",
-        )
-        self.my_file.file = NamedBlobFile(data=b"file data", filename="file.txt")
-        self.file_data = self.my_file.file.data
+        """Set up the test case."""
+        super().setUp()
+        self.file.file = NamedBlobFile(data=b"file data", filename="file.txt")
+        self.file_data = self.file.file.data
 
     def test_localize_utc_date(self):
         naive_datetime = datetime(2024, 9, 10, 12, 0, 0)
@@ -38,11 +28,13 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(localized_datetime, expected_datetime)
 
     def test_timestamp(self):
-        tsr, timestamp_date = timestamp(self.file_data, "http://freetsa.org/tsr")
+        with patch("rfc3161ng.api.RemoteTimestamper.__call__") as mock_timestamper:
+            mock_timestamper.return_value = self.tsr
+            tsr, timestamp_date = timestamp(self.file_data, "http://freetsa.org/tsr")
         self.assertIsInstance(tsr, bytes)
         self.assertIsInstance(timestamp_date, datetime)
-        self.assertAlmostEqual(
-            timestamp_date, datetime.now(pytz.UTC), delta=timedelta(seconds=10)
+        self.assertEqual(
+            timestamp_date, datetime(2025, 8, 25, 14, 49, 8, tzinfo=pytz.UTC)
         )
 
     def test_timestamp_retries(self):
@@ -75,9 +67,7 @@ class TestUtils(unittest.TestCase):
             )
 
     def test_get_timestamp_date_from_tsr_file(self):
-        tsr, timestamp_date = timestamp(self.file_data, "http://freetsa.org/tsr")
-        verif_date = get_timestamp_date_from_tsr_file(tsr)
-        self.assertEqual(timestamp_date, verif_date)
-        self.assertAlmostEqual(
-            verif_date, datetime.now(pytz.UTC), delta=timedelta(seconds=10)
+        timestamp_date = get_timestamp_date_from_tsr_file(self.raw_tsr)
+        self.assertEqual(
+            timestamp_date, datetime(2025, 8, 25, 14, 49, 8, tzinfo=pytz.UTC)
         )
