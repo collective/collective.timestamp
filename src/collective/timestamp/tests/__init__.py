@@ -3,8 +3,10 @@ from pathlib import Path
 from unittest.mock import patch
 
 from collective.timestamp.interfaces import ITimeStamper
-from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING, \
-    COLLECTIVE_TIMESTAMP_FUNCTIONAL_TESTING
+from collective.timestamp.testing import (
+    COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING,
+    COLLECTIVE_TIMESTAMP_FUNCTIONAL_TESTING,
+)
 from plone import api
 from plone.api.portal import set_registry_record
 from plone.namedfile import NamedBlobFile
@@ -38,7 +40,9 @@ class TimestampBaseTestCase(unittest.TestCase):
             type="File",
             id="timestamped-file",
         )
-        self.timestamped_file.file = NamedBlobFile(data=b"file data", filename="file.txt")
+        self.timestamped_file.file = NamedBlobFile(
+            data=b"file data", filename="file.txt"
+        )
         mock_tsr_path = Path(__file__).parent / "resources/mock_tsr_file.tsr"
         with open(mock_tsr_path, "rb") as f:
             self.raw_tsr = f.read()
@@ -52,6 +56,7 @@ class TimestampBaseTestCase(unittest.TestCase):
 
 class TimestampIntegrationTestCase(TimestampBaseTestCase):
     """Integration test case for the collective.timestamp package."""
+
     layer = COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
 
     def setUp(self):
@@ -63,6 +68,7 @@ class TimestampIntegrationTestCase(TimestampBaseTestCase):
 
 class TimestampFunctionalTestCase(TimestampBaseTestCase):
     """Functional test case for the collective.timestamp package."""
+
     layer = COLLECTIVE_TIMESTAMP_FUNCTIONAL_TESTING
 
     def setUp(self):

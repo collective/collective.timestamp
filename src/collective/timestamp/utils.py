@@ -64,7 +64,11 @@ def timestamp(
     success = False
     tsr = None
     # Make a copy to avoid modifying the original list
-    failover_urls = failover_timestamping_service_urls.copy() if failover_timestamping_service_urls else []
+    failover_urls = (
+        failover_timestamping_service_urls.copy()
+        if failover_timestamping_service_urls
+        else []
+    )
     while not success:
         retry_count = 0
         backoff_seconds = initial_backoff_seconds

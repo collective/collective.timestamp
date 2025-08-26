@@ -11,10 +11,13 @@ from zope.component import getMultiAdapter
 from zope.interface.interfaces import ComponentLookupError
 import datetime
 
+
 class TestInfos(TimestampIntegrationTestCase):
 
     def _timestamped_view(self):
-        return getMultiAdapter((self.timestamped_file, self.request), name="timestamp-info")
+        return getMultiAdapter(
+            (self.timestamped_file, self.request), name="timestamp-info"
+        )
 
     def _not_timestamped_view(self):
         return getMultiAdapter((self.file, self.request), name="timestamp-info")
@@ -49,9 +52,13 @@ class TestInfos(TimestampIntegrationTestCase):
         timestamped_view = self._timestamped_view()
 
         self.assertIn("Timestamped on", timestamped_view())
-        self.assertEqual(timestamped_view.more_infos_url(), "http://documentation.timestamptest.com")
+        self.assertEqual(
+            timestamped_view.more_infos_url(), "http://documentation.timestamptest.com"
+        )
         self.assertTrue(timestamped_view.is_timestamped())
-        self.assertEqual(timestamped_view.timestamp_date().isoformat(), "2025-08-25T16:49:08+02:00")
+        self.assertEqual(
+            timestamped_view.timestamp_date().isoformat(), "2025-08-25T16:49:08+02:00"
+        )
 
     def test_timestamp_authority(self):
         not_timestamped_view = self._not_timestamped_view()
@@ -61,7 +68,13 @@ class TestInfos(TimestampIntegrationTestCase):
         timestamp_authority = timestamped_view.timestamp_authority()
         self.assertSetEqual(
             set(timestamp_authority.keys()),
-            {"country_name", "locality_name", "organization_name", "organization_identifier", "common_name"},
+            {
+                "country_name",
+                "locality_name",
+                "organization_name",
+                "organization_identifier",
+                "common_name",
+            },
         )
 
     def test_timestamp_precision(self):
@@ -78,7 +91,6 @@ class TestInfos(TimestampIntegrationTestCase):
         timestamped_view = self._timestamped_view()
         self.assertEqual(timestamped_view.timestamp_protocol(), "RFC 3161")
 
-
     def test_timestamp_algorithm(self):
         not_timestamped_view = self._not_timestamped_view()
         self.assertIsNone(not_timestamped_view.timestamp_algorithm())
@@ -94,7 +106,7 @@ class TestInfos(TimestampIntegrationTestCase):
         self.assertIsNotNone(timestamped_view.timestamp_hash())
         self.assertEqual(
             timestamped_view.timestamp_hash(),
-            "86f3c70fb6673cf303d2206db5f23c237b665d5df9d3e44efef5114845fc9f59"
+            "86f3c70fb6673cf303d2206db5f23c237b665d5df9d3e44efef5114845fc9f59",
         )
 
     def test_policy_oid_present(self):
@@ -166,7 +178,9 @@ class TestInfos(TimestampIntegrationTestCase):
 
         self.assertIsInstance(first["serial_number"], int)
         self.assertIsInstance(first["fingerprint"], str)
-        self.assertRegex(first["fingerprint"], r"^[0-9a-f]{64}$")  # sha256 hex by default
+        self.assertRegex(
+            first["fingerprint"], r"^[0-9a-f]{64}$"
+        )  # sha256 hex by default
         self.assertIsInstance(first["self_issued"], bool)
         self.assertIsInstance(first["has_ski"], bool)
         self.assertIsInstance(first["has_aki"], bool)

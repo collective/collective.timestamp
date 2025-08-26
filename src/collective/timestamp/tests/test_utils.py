@@ -34,8 +34,7 @@ class TestUtils(TimestampIntegrationTestCase):
         self.assertIsInstance(tsr, bytes)
         self.assertIsInstance(timestamp_date, datetime)
         self.assertEqual(
-            timestamp_date,
-            datetime(2025, 8, 25, 14, 49, 8, tzinfo=pytz.UTC)
+            timestamp_date, datetime(2025, 8, 25, 14, 49, 8, tzinfo=pytz.UTC)
         )
 
     def test_timestamp_retries(self):
@@ -70,6 +69,5 @@ class TestUtils(TimestampIntegrationTestCase):
     def test_get_timestamp_date_from_tsr_file(self):
         timestamp_date = get_timestamp_date_from_tsr_file(self.raw_tsr)
         self.assertEqual(
-            timestamp_date,
-            datetime(2025, 8, 25, 14, 49, 8, tzinfo=pytz.UTC)
+            timestamp_date, datetime(2025, 8, 25, 14, 49, 8, tzinfo=pytz.UTC)
         )

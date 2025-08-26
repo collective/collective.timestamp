@@ -12,11 +12,17 @@ import hashlib
 
 RDN_KEY_I18N_MAP = {
     "common_name": _("label_common_name", default="Common Name"),
-    "organization_identifier": _("label_organization_identifier", default="Organization Identifier"),
+    "organization_identifier": _(
+        "label_organization_identifier", default="Organization Identifier"
+    ),
     "organization_name": _("label_organization_name", default="Organization"),
-    "organizational_unit_name": _("label_organizational_unit_name", default="Org. Unit"),
+    "organizational_unit_name": _(
+        "label_organizational_unit_name", default="Org. Unit"
+    ),
     "locality_name": _("label_locality_name", default="Locality"),
-    "state_or_province_name": _("label_state_province_name", default="State / Province"),
+    "state_or_province_name": _(
+        "label_state_province_name", default="State / Province"
+    ),
     "country_name": _("label_country_name", default="Country"),
     "serial_number": _("label_serial_number", default="Serial Number"),
     "email_address": _("label_email_address", default="E-mail"),
@@ -349,7 +355,9 @@ class TimestampInfo(BrowserView):
             return []
         if "certificates" not in signed:
             return []
-        certs = signed["certificates"]  # cms.CertificateSet (SequenceOf CertificateChoices)
+        certs = signed[
+            "certificates"
+        ]  # cms.CertificateSet (SequenceOf CertificateChoices)
         return [choice.chosen for choice in certs if choice.name == "certificate"]
 
     def certificate_chain(self):
@@ -402,7 +410,9 @@ class TimestampInfo(BrowserView):
             if parent is None:
                 issuer_der = tbs["issuer"].dump()
                 if aki and aki.get("authority_cert_serial_number") is not None:
-                    parent = serial_map.get((issuer_der, aki["authority_cert_serial_number"]))
+                    parent = serial_map.get(
+                        (issuer_der, aki["authority_cert_serial_number"])
+                    )
                 if parent is None:
                     parent = subj_map.get(issuer_der)
 
