@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, timedelta
-from unittest.mock import patch
-
-from plone.app.testing import TEST_USER_ID
-from plone.app.testing import setRoles
-
-import pytz
 from collective.timestamp.tests import TimestampIntegrationTestCase
 from collective.timestamp.utils import get_timestamp_date_from_tsr_file
 from collective.timestamp.utils import localize_utc_date
 from collective.timestamp.utils import timestamp
+from datetime import datetime
+from datetime import timedelta
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
 from plone.namedfile.file import NamedBlobFile
+from unittest.mock import patch
+
+import pytz
 
 
 class TestUtils(TimestampIntegrationTestCase):

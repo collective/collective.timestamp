@@ -9,6 +9,7 @@ from plone.app.testing import TEST_USER_ID
 from plone.namedfile.file import NamedBlobFile
 from zope.component import getMultiAdapter
 from zope.interface.interfaces import ComponentLookupError
+
 import datetime
 
 

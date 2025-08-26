@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
 
+from asn1crypto import cms
+from asn1crypto import tsp
+from asn1crypto import x509
+from collective.timestamp import _
 from collective.timestamp.interfaces import ITimeStamper
 from collective.timestamp.interfaces import ITimestampingSettings
 from collective.timestamp.utils import get_timestamp_date_from_tsr_file
 from plone import api
 from Products.Five.browser import BrowserView
-from asn1crypto import tsp, cms, x509
 from zope.i18n import translate
-from collective.timestamp import _
+
 import hashlib
+
 
 RDN_KEY_I18N_MAP = {
     "common_name": _("label_common_name", default="Common Name"),

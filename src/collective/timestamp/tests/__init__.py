@@ -1,20 +1,18 @@
-import unittest
-from pathlib import Path
-from unittest.mock import patch
-
 from collective.timestamp.interfaces import ITimeStamper
-from collective.timestamp.testing import (
-    COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING,
-    COLLECTIVE_TIMESTAMP_FUNCTIONAL_TESTING,
-)
+from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_FUNCTIONAL_TESTING
+from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
+from pathlib import Path
 from plone import api
 from plone.api.portal import set_registry_record
-from plone.namedfile import NamedBlobFile
-from pyasn1.codec.der import decoder
-from rfc3161ng import TimeStampResp
 from plone.app.testing import logout
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from plone.namedfile import NamedBlobFile
+from pyasn1.codec.der import decoder
+from rfc3161ng import TimeStampResp
+from unittest.mock import patch
+
+import unittest
 
 
 class TimestampBaseTestCase(unittest.TestCase):

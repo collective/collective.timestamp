@@ -1,14 +1,14 @@
-import time
-
-import pytz
 from collective.timestamp import logger
 from datetime import datetime
 from pyasn1.codec.der import decoder
 from pyasn1.codec.der import encoder
-from rfc3161ng import RemoteTimestamper
-from rfc3161ng import TimeStampToken
-from rfc3161ng import TimeStampResp
 from rfc3161ng import get_timestamp
+from rfc3161ng import RemoteTimestamper
+from rfc3161ng import TimeStampResp
+from rfc3161ng import TimeStampToken
+
+import pytz
+import time
 
 
 def localize_utc_date(date: datetime):

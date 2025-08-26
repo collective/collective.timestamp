@@ -2,9 +2,8 @@
 
 from collective.timestamp.interfaces import ITimeStamper
 from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING
-from datetime import datetime
-
 from collective.timestamp.tests import TimestampIntegrationTestCase
+from datetime import datetime
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
