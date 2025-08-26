@@ -6,6 +6,7 @@ from collective.timestamp.interfaces import ITimeStamper
 from collective.timestamp.testing import COLLECTIVE_TIMESTAMP_INTEGRATION_TESTING, \
     COLLECTIVE_TIMESTAMP_FUNCTIONAL_TESTING
 from plone import api
+from plone.api.portal import set_registry_record
 from plone.namedfile import NamedBlobFile
 from pyasn1.codec.der import decoder
 from rfc3161ng import TimeStampResp

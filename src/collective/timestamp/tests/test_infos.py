@@ -51,7 +51,7 @@ class TestInfos(TimestampIntegrationTestCase):
         self.assertIn("Timestamped on", timestamped_view())
         self.assertEqual(timestamped_view.more_infos_url(), "http://documentation.timestamptest.com")
         self.assertTrue(timestamped_view.is_timestamped())
-        self.assertEqual(timestamped_view.timestamp_date().isoformat(), "2025-08-04T13:57:48+02:00")
+        self.assertEqual(timestamped_view.timestamp_date().isoformat(), "2025-08-25T16:49:08+02:00")
 
     def test_timestamp_authority(self):
         not_timestamped_view = self._not_timestamped_view()
@@ -111,7 +111,7 @@ class TestInfos(TimestampIntegrationTestCase):
 
         timestamped_view = self._timestamped_view()
         serial = timestamped_view.timestamp_serial_number()
-        self.assertEqual(serial, 8376155216240307842)
+        self.assertEqual(serial, 7378481000937193731)
 
     def test_timestamp_file_and_tsr_links(self):
         not_timestamped_view = self._not_timestamped_view()
