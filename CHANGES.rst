@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.4 (unreleased)
+1.4 (2025-08-26)
 ----------------
 
 - Add a new view `TimestampInfo` to have more info about the timestamp that can also be used as an util view.
