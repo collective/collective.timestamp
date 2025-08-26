@@ -99,7 +99,7 @@ class TestInfos(TimestampIntegrationTestCase):
         timestamped_view = self._timestamped_view()
         self.assertEqual(timestamped_view.timestamp_algorithm(), "sha256")
 
-    def test_tilestamp_hash(self):
+    def test_timestamp_hash(self):
         not_timestamped_view = self._not_timestamped_view()
         self.assertIsNone(not_timestamped_view.timestamp_hash())
 
