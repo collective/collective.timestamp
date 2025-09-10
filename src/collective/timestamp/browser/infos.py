@@ -9,6 +9,7 @@ from collective.timestamp.interfaces import ITimestampingSettings
 from collective.timestamp.utils import get_timestamp_date_from_tsr_file
 from plone import api
 from Products.Five.browser import BrowserView
+from zope.globalrequest import getRequest
 from zope.i18n import translate
 
 import hashlib
@@ -164,9 +165,8 @@ class TimestampInfo(BrowserView):
             for ava in rdn:
                 oid = ava["type"].native
                 value = ava["value"].native
-                label = RDN_KEY_I18N_MAP.get(oid, oid)
-                info[oid] = {"label": label, "value": str(value)}
-
+                translated_label = translate(RDN_KEY_I18N_MAP.get(oid, oid), context=getRequest())
+                info[oid] = {"label": translated_label, "value": str(value)}
         return info
 
     def timestamp_precision(self):

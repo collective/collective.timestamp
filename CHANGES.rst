@@ -5,7 +5,8 @@ Changelog
 1.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Properly translate labels in `TimestampInfo`.
+  [aduchene]
 
 
 1.4 (2025-08-26)
