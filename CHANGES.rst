@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.5 (unreleased)
+1.5 (2025-09-10)
 ----------------
 
 - Properly translate labels in `TimestampInfo`.
