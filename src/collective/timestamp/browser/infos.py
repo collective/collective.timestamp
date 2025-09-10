@@ -165,7 +165,9 @@ class TimestampInfo(BrowserView):
             for ava in rdn:
                 oid = ava["type"].native
                 value = ava["value"].native
-                translated_label = translate(RDN_KEY_I18N_MAP.get(oid, oid), context=getRequest())
+                translated_label = translate(
+                    RDN_KEY_I18N_MAP.get(oid, oid), context=getRequest()
+                )
                 info[oid] = {"label": translated_label, "value": str(value)}
         return info
 
